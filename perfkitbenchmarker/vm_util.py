@@ -341,7 +341,7 @@ def IssueCommand(cmd, should_log=False):
   stdout = stdout.decode('ascii', 'ignore')
   stderr = stderr.decode('ascii', 'ignore')
 
-  debug_text = ('Ran %s. Got return code (%s). STDOUT: %sSTDERR: %s' %
+  debug_text = ('Ran %s. Got return code (%s).\nSTDOUT: %s\nSTDERR: %s' %
                 (full_cmd, process.returncode, stdout, stderr))
   if should_log:
     logging.info(debug_text)
