@@ -77,6 +77,7 @@ LOG_LEVELS = {
     DEBUG: logging.DEBUG,
     INFO: logging.INFO
 }
+LOG_FILE_NAME = 'pkb.log'
 REQUIRED_INFO = ['scratch_disk', 'num_machines']
 # List of functions taking a benchmark_spec. Will be called before benchmark.Run
 # with two parameters: the benchmark and benchmark_spec.
@@ -160,7 +161,7 @@ def ConfigureLogging():
   logger.addHandler(stream_handler)
 
   vm_util.GenTempDir()
-  log_path = vm_util.PrependTempDir('pkb.log')
+  log_path = vm_util.PrependTempDir(LOG_FILE_NAME)
   logging.info('Verbose logging to: %s', log_path)
   file_handler = logging.FileHandler(filename=log_path)
   file_handler.setLevel(logging.DEBUG)
@@ -316,9 +317,13 @@ def RunBenchmarks(publish=True):
     if collector.samples:
       collector.PublishSamples()
 
+    logging.info('Verbose logs can be found at: %s',
+                 vm_util.PrependTempDir(LOG_FILE_NAME))
+
   if FLAGS.run_stage not in [STAGE_ALL, STAGE_CLEANUP]:
     logging.info(
         'To run again with this setup, please use --run_uri=%s', FLAGS.run_uri)
+
 
 
 def Main(argv=sys.argv):
