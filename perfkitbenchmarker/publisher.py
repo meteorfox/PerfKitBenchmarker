@@ -199,7 +199,10 @@ class PrettyPrintStreamPublisher(SamplePublisher):
         data.append('\t%s %s %s\n' %
                     (sample['metric'], sample['value'], sample['unit']))
     data.append('\n')
-    self.stream.write(''.join(data))
+
+    text = ''.join(data)
+    logging.debug('Pretty-printing results to %s:\n%s', self.stream, text)
+    self.stream.write(text)
 
 
 class LogPublisher(SamplePublisher):
