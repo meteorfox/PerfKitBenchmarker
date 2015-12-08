@@ -72,10 +72,11 @@ DEBIAN = 'debian'
 RHEL = 'rhel'
 WINDOWS = 'windows'
 UBUNTU_CONTAINER = 'ubuntu_container'
+DOCKERSWARM = 'DockerSwarm'
 
 FLAGS = flags.FLAGS
 VALID_CLOUDS = [GCP, AZURE, AWS, DIGITALOCEAN, KUBERNETES, OPENSTACK,
-                RACKSPACE, CLOUDSTACK, ALICLOUD]
+                RACKSPACE, CLOUDSTACK, ALICLOUD, DOCKERSWARM]
 flags.DEFINE_enum('cloud', GCP,
                   VALID_CLOUDS,
                   'Name of the cloud to use.')
