@@ -30,25 +30,27 @@ class NovaClient(object):
             return self.__client.__getattribute__(item)
 
     def GetPassword(self):
-      # For compatibility with Nova CLI, use 'OS'-prefixed environment value
-      # if present. Also support reading the password from a file.
+        # For compatibility with Nova CLI, use 'OS'-prefixed environment value
+        # if present. Also support reading the password from a file.
 
-      error_msg = ('No OpenStack password specified. '
-                   'Either set the environment variable OS_PASSWORD to the '
-                   'admin password, or provide the name of a file '
-                   'containing the password using the OPENSTACK_PASSWORD_FILE '
-                   'environment variable or --openstack_password_file flag.')
+        error_msg = ('No OpenStack password specified. '
+                     'Either set the environment variable OS_PASSWORD to the '
+                     'admin password, or provide the name of a file '
+                     'containing the password using the '
+                     'OPENSTACK_PASSWORD_FILE  environment variable or '
+                     '--openstack_password_file flag.')
 
-      password = os.getenv('OS_PASSWORD')
-      if password is not None:
-        return password
-      try:
-        with open(os.path.expanduser(FLAGS.openstack_password_file)) as pwfile:
-          password = pwfile.readline().rstrip()
-          return password
-      except IOError as e:
-        raise Exception(error_msg + ' ' + str(e))
-      raise Exception(error_msg)
+        password = os.getenv('OS_PASSWORD')
+        if password is not None:
+            return password
+        try:
+            password_file = os.path.expanduser(FLAGS.openstack_password_file)
+            with open(password_file) as pwfile:
+                password = pwfile.readline().rstrip()
+                return password
+        except IOError as e:
+            raise Exception(error_msg + ' ' + str(e))
+        raise Exception(error_msg)
 
     def __init__(self):
         from keystoneclient import session as ksc_session
