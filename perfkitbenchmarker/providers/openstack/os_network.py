@@ -39,15 +39,26 @@ class OpenStackFirewall(network.BaseFirewall):
         self.__nclient = utils.NovaClient()
 
         with self._lock:
-            if not (self.__nclient.security_groups.findall(
+            if not (self.__nclient.nova.security_groups.findall(
                     name='perfkit_sc_group')):
-                self.sec_group = self.__nclient.security_groups.create(
+                self.sec_group = self.__nclient.nova.security_groups.create(
                     'perfkit_sc_group',
                     'Firewall configuration for Perfkit Benchmarker'
                 )
             else:
-                self.sec_group = self.__nclient.security_groups.findall(
+                self.sec_group = self.__nclient.nova.security_groups.findall(
                     name='perfkit_sc_group')[0]
+
+    def __getstate__(self):
+        d = self.__dict__.copy()
+        if '__nclient' in d.keys():
+            del d['__nclient']
+        return d
+
+    def __setstate__(self, d):
+        if '__nclient' not in d.keys():
+            self.__nclient = utils.NovaClient()
+        self.__dict__.update(d)
 
     def AllowICMP(self, vm, icmp_type=-1, icmp_code=-1):
         """Creates a Security Group Rule on the Firewall to allow/disallow
@@ -72,10 +83,11 @@ class OpenStackFirewall(network.BaseFirewall):
                 return
 
             try:
-                self.__nclient.security_group_rules.create(self.sec_group.id,
-                                                           ip_protocol='icmp',
-                                                           from_port=icmp_type,
-                                                           to_port=icmp_code)
+                self.__nclient.nova.security_group_rules.create(
+                    self.sec_group.id,
+                    ip_protocol='icmp',
+                    from_port=icmp_type,
+                    to_port=icmp_code)
             except BadRequest:
                 logging.debug('Rule icmp:%d-%d already exists' % (icmp_type,
                                                                   icmp_code))
@@ -108,7 +120,7 @@ class OpenStackFirewall(network.BaseFirewall):
                 return
             for prot in ('tcp', 'udp',):
                 try:
-                    self.__nclient.security_group_rules.create(
+                    self.__nclient.nova.security_group_rules.create(
                         self.sec_group.id, ip_protocol=prot,
                         from_port=port, to_port=to_port)
                 except BadRequest:
@@ -131,22 +143,34 @@ class OpenStackPublicNetwork(object):
         self.__floating_ip_lock = threading.Lock()
         self.ip_pool_name = pool
 
+    def __getstate__(self):
+        d = self.__dict__.copy()
+        if '__nclient' in d.keys():
+            del d['__nclient']
+        return d
+
+    def __setstate__(self, d):
+        if '__nclient' not in d.keys():
+            d['__nclient'] = utils.NovaClient()
+        self.__dict__.update(d)
+
     def allocate(self):
         with self.__floating_ip_lock:
-            return self.__nclient.floating_ips.create(pool=self.ip_pool_name)
+            return self.__nclient.nova.floating_ips.create(
+                pool=self.ip_pool_name)
 
     def release(self, floating_ip):
         f_id = floating_ip.id
-        if self.__nclient.floating_ips.get(f_id):
+        if self.__nclient.nova.floating_ips.get(f_id):
             with self.__floating_ip_lock:
-                if self.__nclient.floating_ips.get(f_id):
-                    self.__nclient.floating_ips.delete(floating_ip)
-                    while self.__nclient.floating_ips.findall(id=f_id):
+                if self.__nclient.nova.floating_ips.get(f_id):
+                    self.__nclient.nova.floating_ips.delete(floating_ip)
+                    while self.__nclient.nova.floating_ips.findall(id=f_id):
                         time.sleep(1)
 
     def get_or_create(self):
         with self.__floating_ip_lock:
-            floating_ips = self.__nclient.floating_ips.findall(
+            floating_ips = self.__nclient.nova.floating_ips.findall(
                 instance_id=None,
                 pool=self.ip_pool_name)
         if floating_ips:
@@ -155,6 +179,6 @@ class OpenStackPublicNetwork(object):
             return self.allocate()
 
     def is_attached(self, floating_ip):
-        return self.__nclient.floating_ips.get(
+        return self.__nclient.nova.floating_ips.get(
             floating_ip.id
         ).fixed_ip is not None

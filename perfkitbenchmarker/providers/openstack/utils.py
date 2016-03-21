@@ -23,12 +23,6 @@ FLAGS = flags.FLAGS
 
 class NovaClient(object):
 
-    def __getattribute__(self, item):
-        try:
-            return super(NovaClient, self).__getattribute__(item)
-        except AttributeError:
-            return self.__client.__getattribute__(item)
-
     def GetPassword(self):
         # For compatibility with Nova CLI, use 'OS'-prefixed environment value
         # if present. Also support reading the password from a file.
@@ -50,7 +44,6 @@ class NovaClient(object):
                 return password
         except IOError as e:
             raise Exception(error_msg + ' ' + str(e))
-        raise Exception(error_msg)
 
     def __init__(self):
         from keystoneclient import session as ksc_session
@@ -69,8 +62,8 @@ class NovaClient(object):
                                   password=self.password,
                                   tenant_name=self.tenant)
         self._session = ksc_session.Session(auth=self.__auth)
-        self.__client = nova.Client(version='2', session=self._session,
-                                    http_log_debug=self.http_log_debug)
+        self.nova = nova.Client(version='2', session=self._session,
+                                http_log_debug=self.http_log_debug)
         # Set requests library logging level to WARNING
         # so it doesn't spam logs with unhelpful messages,
         # such as 'Starting new HTTP Connection'.

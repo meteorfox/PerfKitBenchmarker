@@ -62,11 +62,22 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
         self.boot_wait_time = None
         self.image = self.image or self.DEFAULT_IMAGE
 
-    def _Create(self):
-        image = self.client.images.findall(name=self.image)[0]
-        flavor = self.client.flavors.findall(name=self.machine_type)[0]
+    def __getstate__(self):
+        d = self.__dict__.copy()
+        if 'client' in d.keys():
+            del d['client']
+        return d
 
-        network = self.client.networks.find(
+    def __setstate__(self, d):
+        if 'client' not in d.keys():
+            d['client'] = os_utils.NovaClient()
+        self.__dict__.update(d)
+
+    def _Create(self):
+        image = self.client.nova.images.findall(name=self.image)[0]
+        flavor = self.client.nova.flavors.findall(name=self.machine_type)[0]
+
+        network = self.client.nova.networks.find(
             label=FLAGS.openstack_private_network)
         nics = [{'net-id': network.id}]
         image_id = image.id
@@ -76,9 +87,10 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
         if FLAGS.openstack_scheduler_policy != NONE:
             group_name = 'perfkit_%s' % FLAGS.run_uri
             try:
-                group = self.client.server_groups.findall(name=group_name)[0]
+                group = self.client.nova.server_groups.findall(
+                    name=group_name)[0]
             except IndexError:
-                group = self.client.server_groups.create(
+                group = self.client.nova.server_groups.create(
                     policies=[FLAGS.openstack_scheduler_policy],
                     name=group_name)
             scheduler_hints = {'group': group.id}
@@ -98,7 +110,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
                               'destination_type': 'volume',
                               'delete_on_termination': True}]
 
-        vm = self.client.servers.create(
+        vm = self.client.nova.servers.create(
             name=self.name,
             image=image_id,
             flavor=flavor.id,
@@ -117,7 +129,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
         instance = None
         while status == 'BUILD':
             time.sleep(5)
-            instance = self.client.servers.get(self.id)
+            instance = self.client.nova.servers.get(self.id)
             status = instance.status
 
         with self._floating_ip_lock:
@@ -136,7 +148,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
     def _Delete(self):
         from novaclient.exceptions import NotFound
         try:
-            self.client.servers.delete(self.id)
+            self.client.nova.servers.delete(self.id)
             time.sleep(5)
         except NotFound:
             logging.info('Instance not found, may have been already deleted')
@@ -146,7 +158,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
     def _Exists(self):
         from novaclient.exceptions import NotFound
         try:
-            return self.client.servers.get(self.id) is not None
+            return self.client.nova.servers.get(self.id) is not None
         except NotFound:
             return False
 
@@ -179,20 +191,20 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
         self.DeleteKeyfile()
 
     def ImportKeyfile(self):
-        if not (self.client.keypairs.findall(name=self.key_name)):
+        if not (self.client.nova.keypairs.findall(name=self.key_name)):
             cat_cmd = ['cat',
                        vm_util.GetPublicKeyPath()]
             key_file, _ = vm_util.IssueRetryableCommand(cat_cmd)
-            pk = self.client.keypairs.create(self.key_name,
-                                             public_key=key_file)
+            pk = self.client.nova.keypairs.create(self.key_name,
+                                                  public_key=key_file)
         else:
-            pk = self.client.keypairs.findall(name=self.key_name)[0]
+            pk = self.client.nova.keypairs.findall(name=self.key_name)[0]
         self.pk = pk
 
     def DeleteKeyfile(self):
         from novaclient.exceptions import NotFound
         try:
-            self.client.keypairs.delete(self.pk)
+            self.client.nova.keypairs.delete(self.pk)
         except NotFound:
             logging.info("Deleting key doesn't exists")
 

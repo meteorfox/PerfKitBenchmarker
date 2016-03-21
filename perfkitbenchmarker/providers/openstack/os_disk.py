@@ -37,17 +37,28 @@ class OpenStackDisk(disk.BaseDisk):
         self.device = None
         self._disk = None
 
+    def __getstate__(self):
+        d = self.__dict__.copy()
+        if '__nclient' in d.keys():
+            del d['__nclient']
+        return d
+
+    def __setstate__(self, d):
+        if '__nclient' not in d.keys():
+            d['__nclient'] = os_utils.NovaClient()
+        self.__dict__.update(d)
+
     def _Create(self):
-        self._disk = self.__nclient.volumes.create(self.disk_size,
-                                                   display_name=self.name,
-                                                   availability_zone=self.zone,
-                                                   imageRef=self.image,
-                                                   )
+        self._disk = self.__nclient.nova.volumes.create(
+            self.disk_size,
+            display_name=self.name,
+            availability_zone=self.zone,
+            imageRef=self.image,)
 
         is_unavailable = True
         while is_unavailable:
             time.sleep(1)
-            volume = self.__nclient.volumes.get(self._disk.id)
+            volume = self.__nclient.nova.volumes.get(self._disk.id)
             if volume:
                 is_unavailable = not (volume.status == "available")
                 self._disk = volume
@@ -63,10 +74,10 @@ class OpenStackDisk(disk.BaseDisk):
         sleep = 1
         sleep_count = 0
         try:
-            self.__nclient.volumes.delete(self._disk)
+            self.__nclient.nova.volumes.delete(self._disk)
             is_deleted = False
             while not is_deleted:
-                volume = self.__nclient.volumes.get(self._disk.id)
+                volume = self.__nclient.nova.volumes.get(self._disk.id)
                 is_deleted = volume is None
                 time.sleep(sleep)
                 sleep_count += 1
@@ -79,7 +90,7 @@ class OpenStackDisk(disk.BaseDisk):
     def _Exists(self):
         from novaclient.exceptions import NotFound
         try:
-            volume = self.__nclient.volumes.get(self._disk.id)
+            volume = self.__nclient.nova.volumes.get(self._disk.id)
             return volume and volume.status in ('available', 'in-use',
                                                 'deleting',)
         except NotFound:
@@ -89,19 +100,20 @@ class OpenStackDisk(disk.BaseDisk):
         self.attached_vm_name = vm.name
         self.attached_vm_id = vm.id
 
-        result = self.__nclient.volumes.create_server_volume(vm.id,
-                                                             self._disk.id,
-                                                             self.device)
+        result = self.__nclient.nova.volumes.create_server_volume(
+            vm.id,
+            self._disk.id,
+            self.device)
         self.attach_id = result.id
 
         volume = None
         is_unattached = True
         while is_unattached:
             time.sleep(1)
-            volume = self.__nclient.volumes.get(result.id)
+            volume = self.__nclient.nova.volumes.get(result.id)
             if volume:
-                is_unattached = not(volume.status == "in-use"
-                                    and volume.attachments)
+                is_unattached = not(volume.status == "in-use" and
+                                    volume.attachments)
 
         for attachment in volume.attachments:
             if self.attach_id == attachment.get('volume_id'):
@@ -114,5 +126,5 @@ class OpenStackDisk(disk.BaseDisk):
         return self.device
 
     def Detach(self):
-        self.__nclient.volumes.delete_server_volume(self.attached_vm_id,
-                                                    self.attach_id)
+        self.__nclient.nova.volumes.delete_server_volume(self.attached_vm_id,
+                                                         self.attach_id)
