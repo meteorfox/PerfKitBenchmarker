@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Getting Started - PerfKit Benchmarker</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../extra.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">PerfKit Benchmarker</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li class="active">
+    <a href="./">Getting Started</a>
+</li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cloud Provider Clients</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../providers/gcp/">Google Cloud Platform</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/aws/">Amazon Web Services</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/azure/">Microsoft Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/alicloud/">AliCloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/digitalocean/">Digital Ocean</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/rackspace/">Rackspace Public Cloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/profitbricks/">ProfitBricks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/kubernetes/">Kubernetes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/openstack/">OpenStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/cloudstack/">CloudStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/mesos/">Apache Mesos</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/staticvm/">Pre-provisioned Machines</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/image-prereqs-docker-based-clouds/">Configuring Docker-based Cloud Provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Benchmarks</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../benchmarks/benchmark-sets/">Benchmark Sets</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/object-storage/">Configuring Object Storage Benchmark</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/linux-benchmarks/">Linux Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/windows-benchmarks/">Windows Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/juju/">Juju Support</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+<li >
+    <a href="../configurations/">Configurations</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../community/">Community</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../media/">Media</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../contributing/contributing/">Contributing</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../contributing/license/">Licensing</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../..">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../providers/gcp/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#getting-started">Getting Started</a></li>
+        
+            <li><a href="#installing-prerequisites">Installing Prerequisites</a></li>
+        
+            <li><a href="#downloading-perfkit-benchmarker">Downloading PerfKit Benchmarker</a></li>
+        
+            <li><a href="#installation">Installation</a></li>
+        
+            <li><a href="#cloud-cli-setup">Cloud CLI Setup</a></li>
+        
+            <li><a href="#running-a-single-benchmark">Running a Single Benchmark</a></li>
+        
+            <li><a href="#running-a-benchmark-set">Running a Benchmark Set</a></li>
+        
+            <li><a href="#useful-global-flags">Useful Global Flags</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="getting-started">Getting Started</h1>
+<h2 id="installing-prerequisites">Installing Prerequisites</h2>
+<hr />
+<p>Before you can run the PerfKit Benchmaker, you will need account(s) on the
+Cloud provider(s) you want to benchmark:</p>
+<ul>
+<li><a href="https://cloud.google.com/">Google Cloud Platform</a></li>
+<li><a href="https://aws.amazon.com/">Amazon Web Services</a></li>
+<li><a href="https://azure.microsoft.com/">Microsoft Azure</a></li>
+<li><a href="https://intl.aliyun.com/">Alibaba Cloud</a></li>
+<li><a href="https://www.digitalocean.com/">DigitalOcean</a></li>
+<li><a href="https://www.rackspace.com/">Rackspace Public Cloud</a></li>
+<li><a href="https://www.profitbricks.com/">ProfitBricks</a></li>
+</ul>
+<p>Alternatively, you will need credentials for the following, if it applies:</p>
+<ul>
+<li>Kubernetes</li>
+<li>OpenStack</li>
+<li>CloudStack</li>
+<li>Apache Mesos</li>
+<li>Pre-provisioned machines</li>
+</ul>
+<p>You also need the software dependencies, which are mostly command line tools and
+credentials to access your accounts without a password.</p>
+<p>If you are running on Windows, you will need to install GitHub Windows
+since it includes tools like <code>openssl</code> and an <code>ssh</code> client. Alternatively you can
+install Cygwin since it should include the same tools.</p>
+<h3 id="python-27-and-pip">Python 2.7 and pip</h3>
+<p>If you are running on Windows, get the latest version of Python 2.7
+<a href="https://www.python.org/downloads/windows/">here</a>. This should have pip bundled
+with it. Make sure your <code>PATH</code> environment variable is set so that you can use
+both <code>python</code> and <code>pip</code> on the command line (you can have the installer do it
+for you if you select the correct option).</p>
+<p>Most Linux distributions and recent Mac OS X version already have Python 2.7
+installed.
+If Python is not installed, you can likely install it using your distribution's package manager, or see the <a href="https://www.python.org/downloads/">Python Download page</a>.</p>
+<p>If you need to install <code>pip</code>, see <a href="http://pip.readthedocs.org/en/stable/installing/">these instructions</a>.</p>
+<h3 id="install-github-windows-windows-only">Install GitHub Windows - <em>Windows Only</em></h3>
+<p>Instructions: https://windows.github.com/</p>
+<p>Make sure that <code>openssl</code>/<code>ssh</code>/<code>scp</code>/<code>ssh-keygen</code> are on your path (you will need to update the <code>PATH</code> environment variable).
+The path to these commands should be</p>
+<p><code>C:\Users\&lt;user&gt;\AppData\Local\GitHub\PortableGit_&lt;guid&gt;\bin</code></p>
+<h2 id="downloading-perfkit-benchmarker">Downloading PerfKit Benchmarker</h2>
+<hr />
+<h3 id="download-packaged-release">Download packaged release</h3>
+<p>The packaged releases are available for download from the <a href="http://github.com/GoogleCloudPlatform/PerfKitBenchmarker/releases">GitHub Perfkit Benchmarker releases page.</a>
+Download the latest release and extract the compressed file.</p>
+<h3 id="download-latest-from-source">Download latest from source</h3>
+<p>Download the PerfKit Benchmarker source code by cloning the GitHub repository.</p>
+<pre><code class="bash">  git clone https://github.com/GoogleCloudPlatform/PerfKitBenchmarker.git
+  cd PerfKitBenchmarker
+</code></pre>
+
+<h2 id="installation">Installation</h2>
+<hr />
+<p>After downloading PerfKit Benchmarker, simply install the <code>pip</code> dependencies
+using the <code>requirements.txt</code> file. A virtualenv is recommended.</p>
+<pre><code class="bash">  cd /path/to/PerfKitBenchmarker
+  sudo pip install -r requirements.txt
+</code></pre>
+
+<h2 id="cloud-cli-setup">Cloud CLI Setup</h2>
+<hr />
+<p>PerfKit Benchmarker can run benchmarks both on Cloud Providers (GCP,
+AWS, Azure, DigitalOcean, etc) as well as any "machine" you can SSH into.</p>
+<p>To quickly get started benchmarking the Google Cloud Platform:</p>
+<h3 id="install-gcloud-and-setup-authentication">Install gcloud and setup authentication</h3>
+<p>Instructions: <a href="https://developers.google.com/cloud/sdk/">https://developers.google.com/cloud/sdk/</a></p>
+<p>If you're using OS X or Linux you can run the command below.</p>
+<p>When prompted pick the local folder, then Python project, then the defaults for all the rest</p>
+<pre><code class="bash">  curl https://sdk.cloud.google.com | bash
+</code></pre>
+
+<p>Restart your shell window (or logout/ssh again if running on a VM)</p>
+<p>On Windows, visit the same page and follow the Windows installation instructions on the page.</p>
+<p>Set your credentials up: <a href="https://developers.google.com/cloud/sdk/gcloud/#gcloud.auth">https://developers.google.com/cloud/sdk/gcloud/#gcloud.auth</a></p>
+<p>Run the command below.
+It will print a web page URL. Navigate there, authorize the gcloud instance you just installed to use the services
+it lists, copy the access token and give it to the shell prompt.</p>
+<pre><code>  gcloud auth login
+</code></pre>
+
+<p>You will need a project ID before you can run. Please navigate to
+<a href="https://console.developers.google.com">https://console.developers.google.com</a> and create one.</p>
+<h3 id="other-cloud-systems">Other Cloud Systems</h3>
+<p>For instructions on how to configure PerfKit Benchmarker  and run a benchmark
+for other cloud systems see:</p>
+<ul>
+<li><a href="../providers/aws/">Amazon Web Services</a></li>
+<li><a href="../providers/azure/">Microsoft Azure</a></li>
+<li><a href="../providers/alicloud/">Alibaba Cloud</a></li>
+<li><a href="../providers/digitalocean/">DigitalOcean</a></li>
+<li><a href="../providers/rackspace/">Rackspace Public Cloud</a></li>
+<li><a href="../providers/profitbricks/">ProfitBricks</a></li>
+<li><a href="../providers/kubernetes/">Kubernetes</a></li>
+<li><a href="../providers/openstack/">OpenStack</a></li>
+<li><a href="../providers/cloudstack/">CloudStack</a></li>
+<li><a href="../providers/mesos/">Apache Mesos</a></li>
+<li><a href="../providers/staticvm/">Pre-provisioned machines</a></li>
+</ul>
+<h2 id="running-a-single-benchmark">Running a Single Benchmark</h2>
+<hr />
+<h3 id="example-run-on-gcp">Example run on GCP</h3>
+<pre><code class="bash">  python pkb.py --project=&lt;GCP project ID&gt; --benchmarks='iperf' --machine_type='f1-micro'
+</code></pre>
+
+<p>For a list of all available benchmarks see <a href="../benchmarks/linux-benchmarks/">Benchmarks</a>.</p>
+<h2 id="running-a-benchmark-set">Running a Benchmark Set</h2>
+<hr />
+<p>Benchmark set is a grouping of one or more benchmarks that can be sequentially
+executed one after the other. For more info on benchmark sets see <a href="../benchmarks/benchmark-sets/">Benchmark Sets</a>.</p>
+<h3 id="example-run-on-gcp_1">Example run on GCP</h3>
+<pre><code class="bash">  python pkb.py --project=&lt;GCP project ID&gt; --benchmarks='standard_set' \
+                --machine_type='f1-micro'
+</code></pre>
+
+<h2 id="useful-global-flags">Useful Global Flags</h2>
+<hr />
+<p>The following are some common flags used when configuring
+PerfKit Benchmarker.</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--help</code></td>
+<td>see all flags</td>
+</tr>
+<tr>
+<td><code>--benchmarks</code></td>
+<td>A comma separated list of benchmarks or benchmark sets to run such as <code>--benchmarks=iperf,ping</code> . To see the full list, run <code>./pkb.py --help</code></td>
+</tr>
+<tr>
+<td><code>--cloud</code></td>
+<td>Cloud where the benchmarks are run. See the table below for choices.</td>
+</tr>
+<tr>
+<td><code>--machine_type</code></td>
+<td>Type of machine to provision if pre-provisioned machines are not used. Most cloud providers accept the names of pre-defined provider-specific machine types (for example, GCP supports <code>--machine_type=n1-standard-8</code> for a GCE n1-standard-8 VM). Some cloud providers support YAML expressions that match the corresponding VM spec machine_type property in the <a href="#configurations-and-configuration-overrides">YAML configs</a> (for example, GCP supports <code>--machine_type="{cpus: 1, memory: 4.5GiB}"</code> for a GCE custom VM with 1 vCPU and 4.5GiB memory). Note that the value provided by this flag will affect all provisioned machines; users who wish to provision different machine types for different roles within a single benchmark run should use the <a href="#configurations-and-configuration-overrides">YAML configs</a> for finer control.</td>
+</tr>
+<tr>
+<td><code>--zone</code></td>
+<td>This flag allows you to override the default zone. See the table below.</td>
+</tr>
+<tr>
+<td><code>--data_disk_type</code></td>
+<td>Type of disk to use. Names are provider-specific, but see table below.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cloud-and-zones">Cloud and Zones</h3>
+<p>The default cloud is 'GCP', override with the <code>--cloud</code> flag.
+Each cloud has a default zone which you can override with the <code>--zone</code> flag,
+the flag supports the same values that the corresponding Cloud CLIs take:</p>
+<table>
+<thead>
+<tr>
+<th>Cloud name</th>
+<th>Default zone</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GCP</td>
+<td>us-central1-a</td>
+<td></td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>us-east-1a</td>
+<td></td>
+</tr>
+<tr>
+<td>Azure</td>
+<td>East US</td>
+<td></td>
+</tr>
+<tr>
+<td>AliCloud</td>
+<td>West US</td>
+<td></td>
+</tr>
+<tr>
+<td>DigitalOcean</td>
+<td>sfo1</td>
+<td>You must use a zone that supports the features 'metadata' (for cloud config) and 'private_networking'.</td>
+</tr>
+<tr>
+<td>OpenStack</td>
+<td>nova</td>
+<td></td>
+</tr>
+<tr>
+<td>CloudStack</td>
+<td>QC-1</td>
+<td></td>
+</tr>
+<tr>
+<td>Rackspace</td>
+<td>IAD</td>
+<td>OnMetal machine-types are available only in IAD zone</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>k8s</td>
+<td></td>
+</tr>
+<tr>
+<td>ProfitBricks</td>
+<td>ZONE_1</td>
+<td>Additional zones: ZONE_2</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code class="bash">python pkb.py --cloud='GCP' --zone='us-central1-a' --benchmarks='iperf,ping'
+</code></pre>
+
+<h3 id="storage-disk-types">Storage Disk Types</h3>
+<p>The disk type names vary by provider, but the following table summarizes some
+useful ones. Many cloud providers have more disk types beyond these options.</p>
+<table>
+<thead>
+<tr>
+<th>Cloud name</th>
+<th>Network-attached SSD</th>
+<th>Network-attached HDD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GCP</td>
+<td>pd-ssd</td>
+<td>pd-standard</td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>gp2</td>
+<td>standard</td>
+</tr>
+<tr>
+<td>Azure</td>
+<td>premium-storage</td>
+<td>standard-disk</td>
+</tr>
+<tr>
+<td>Rackspace</td>
+<td>cbs-ssd</td>
+<td>cbs-sata</td>
+</tr>
+</tbody>
+</table>
+<p>Also note that <code>--data_disk_type=local</code> tells PKB not to allocate a separate
+disk, but to use whatever comes with the VM. This is useful with AWS instance
+types that come with local SSDs, or with the GCP <code>--gce_num_local_ssds</code> flag.</p>
+<p>If an instance type comes with more than one disk, PKB uses whichever does <em>not</em>
+hold the root partition. Specifically, on Azure, PKB always uses <code>/dev/sdb</code> as
+its scratch device.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+                <center>Copyright &copy PerfKit Benchmarker Authors</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

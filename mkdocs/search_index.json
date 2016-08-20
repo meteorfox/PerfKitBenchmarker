@@ -1,0 +1,709 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "PerfKit Benchmarker Docs\n\n\nWhat is PerfKit Benchmarker?\n\n\n\n\nPerfKit Benchmarker is an open source benchmarking tool used to measure and\ncompare cloud offerings. It is a community effort involving over 500\nparticipants including researchers, academic institutions and companies together\nwith the originator, Google. PerfKit Benchmarker reduces the complexity in\nrunning benchmarks on supported cloud providers with unified and simple\ncommands.\n\n\nPerfKit Benchmarker measures the end to end time to provision\nresources in the cloud, in addition to reporting on the most standard metrics\nof peak performance, including:\n\n\n\n\nLatency\n\n\nThroughput\n\n\nTime-to-complete\n\n\nIOPS\n\n\n\n\nPerfKit Benchmarker currently supports these cloud providers:\n\n\n\n\nGoogle Cloud Platform\n\n\nAmazon Web Services\n\n\nMicrosoft Azure\n\n\nAlibaba Cloud\n\n\nDigitalOcean\n\n\nOpenStack\n\n\nCloudStack\n\n\nRackspace\n\n\nProfitBricks\n\n\n\n\nBesides cloud providers, PerfKit Benchmarker can be used to run benchmarks on:\n\n\n\n\nKubernetes\n\n\nApache Mesos\n\n\nPre-provisioned machines\n\n\n\n\nReady to \nGet Started\n?", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#perfkit-benchmarker-docs", 
+            "text": "", 
+            "title": "PerfKit Benchmarker Docs"
+        }, 
+        {
+            "location": "/#what-is-perfkit-benchmarker", 
+            "text": "PerfKit Benchmarker is an open source benchmarking tool used to measure and\ncompare cloud offerings. It is a community effort involving over 500\nparticipants including researchers, academic institutions and companies together\nwith the originator, Google. PerfKit Benchmarker reduces the complexity in\nrunning benchmarks on supported cloud providers with unified and simple\ncommands.  PerfKit Benchmarker measures the end to end time to provision\nresources in the cloud, in addition to reporting on the most standard metrics\nof peak performance, including:   Latency  Throughput  Time-to-complete  IOPS   PerfKit Benchmarker currently supports these cloud providers:   Google Cloud Platform  Amazon Web Services  Microsoft Azure  Alibaba Cloud  DigitalOcean  OpenStack  CloudStack  Rackspace  ProfitBricks   Besides cloud providers, PerfKit Benchmarker can be used to run benchmarks on:   Kubernetes  Apache Mesos  Pre-provisioned machines", 
+            "title": "What is PerfKit Benchmarker?"
+        }, 
+        {
+            "location": "/#ready-to-get-started", 
+            "text": "", 
+            "title": "Ready to Get Started?"
+        }, 
+        {
+            "location": "/documentation/getting-started/", 
+            "text": "Getting Started\n\n\nInstalling Prerequisites\n\n\n\n\nBefore you can run the PerfKit Benchmaker, you will need account(s) on the\nCloud provider(s) you want to benchmark:\n\n\n\n\nGoogle Cloud Platform\n\n\nAmazon Web Services\n\n\nMicrosoft Azure\n\n\nAlibaba Cloud\n\n\nDigitalOcean\n\n\nRackspace Public Cloud\n\n\nProfitBricks\n\n\n\n\nAlternatively, you will need credentials for the following, if it applies:\n\n\n\n\nKubernetes\n\n\nOpenStack\n\n\nCloudStack\n\n\nApache Mesos\n\n\nPre-provisioned machines\n\n\n\n\nYou also need the software dependencies, which are mostly command line tools and\ncredentials to access your accounts without a password.\n\n\nIf you are running on Windows, you will need to install GitHub Windows\nsince it includes tools like \nopenssl\n and an \nssh\n client. Alternatively you can\ninstall Cygwin since it should include the same tools.\n\n\nPython 2.7 and pip\n\n\nIf you are running on Windows, get the latest version of Python 2.7\n\nhere\n. This should have pip bundled\nwith it. Make sure your \nPATH\n environment variable is set so that you can use\nboth \npython\n and \npip\n on the command line (you can have the installer do it\nfor you if you select the correct option).\n\n\nMost Linux distributions and recent Mac OS X version already have Python 2.7\ninstalled.\nIf Python is not installed, you can likely install it using your distribution's package manager, or see the \nPython Download page\n.\n\n\nIf you need to install \npip\n, see \nthese instructions\n.\n\n\nInstall GitHub Windows - \nWindows Only\n\n\nInstructions: https://windows.github.com/\n\n\nMake sure that \nopenssl\n/\nssh\n/\nscp\n/\nssh-keygen\n are on your path (you will need to update the \nPATH\n environment variable).\nThe path to these commands should be\n\n\nC:\\Users\\\nuser\n\\AppData\\Local\\GitHub\\PortableGit_\nguid\n\\bin\n\n\nDownloading PerfKit Benchmarker\n\n\n\n\nDownload packaged release\n\n\nThe packaged releases are available for download from the \nGitHub Perfkit Benchmarker releases page.\n\nDownload the latest release and extract the compressed file.\n\n\nDownload latest from source\n\n\nDownload the PerfKit Benchmarker source code by cloning the GitHub repository.\n\n\n  git clone https://github.com/GoogleCloudPlatform/PerfKitBenchmarker.git\n  cd PerfKitBenchmarker\n\n\n\n\nInstallation\n\n\n\n\nAfter downloading PerfKit Benchmarker, simply install the \npip\n dependencies\nusing the \nrequirements.txt\n file. A virtualenv is recommended.\n\n\n  cd /path/to/PerfKitBenchmarker\n  sudo pip install -r requirements.txt\n\n\n\n\nCloud CLI Setup\n\n\n\n\nPerfKit Benchmarker can run benchmarks both on Cloud Providers (GCP,\nAWS, Azure, DigitalOcean, etc) as well as any \"machine\" you can SSH into.\n\n\nTo quickly get started benchmarking the Google Cloud Platform:\n\n\nInstall gcloud and setup authentication\n\n\nInstructions: \nhttps://developers.google.com/cloud/sdk/\n\n\nIf you're using OS X or Linux you can run the command below.\n\n\nWhen prompted pick the local folder, then Python project, then the defaults for all the rest\n\n\n  curl https://sdk.cloud.google.com | bash\n\n\n\n\nRestart your shell window (or logout/ssh again if running on a VM)\n\n\nOn Windows, visit the same page and follow the Windows installation instructions on the page.\n\n\nSet your credentials up: \nhttps://developers.google.com/cloud/sdk/gcloud/#gcloud.auth\n\n\nRun the command below.\nIt will print a web page URL. Navigate there, authorize the gcloud instance you just installed to use the services\nit lists, copy the access token and give it to the shell prompt.\n\n\n  gcloud auth login\n\n\n\n\nYou will need a project ID before you can run. Please navigate to\n\nhttps://console.developers.google.com\n and create one.\n\n\nOther Cloud Systems\n\n\nFor instructions on how to configure PerfKit Benchmarker  and run a benchmark\nfor other cloud systems see:\n\n\n\n\nAmazon Web Services\n\n\nMicrosoft Azure\n\n\nAlibaba Cloud\n\n\nDigitalOcean\n\n\nRackspace Public Cloud\n\n\nProfitBricks\n\n\nKubernetes\n\n\nOpenStack\n\n\nCloudStack\n\n\nApache Mesos\n\n\nPre-provisioned machines\n\n\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on GCP\n\n\n  python pkb.py --project=\nGCP project ID\n --benchmarks='iperf' --machine_type='f1-micro'\n\n\n\n\nFor a list of all available benchmarks see \nBenchmarks\n.\n\n\nRunning a Benchmark Set\n\n\n\n\nBenchmark set is a grouping of one or more benchmarks that can be sequentially\nexecuted one after the other. For more info on benchmark sets see \nBenchmark Sets\n.\n\n\nExample run on GCP\n\n\n  python pkb.py --project=\nGCP project ID\n --benchmarks='standard_set' \\\n                --machine_type='f1-micro'\n\n\n\n\nUseful Global Flags\n\n\n\n\nThe following are some common flags used when configuring\nPerfKit Benchmarker.\n\n\n\n\n\n\n\n\nFlag\n\n\nNotes\n\n\n\n\n\n\n\n\n\n\n--help\n\n\nsee all flags\n\n\n\n\n\n\n--benchmarks\n\n\nA comma separated list of benchmarks or benchmark sets to run such as \n--benchmarks=iperf,ping\n . To see the full list, run \n./pkb.py --help\n\n\n\n\n\n\n--cloud\n\n\nCloud where the benchmarks are run. See the table below for choices.\n\n\n\n\n\n\n--machine_type\n\n\nType of machine to provision if pre-provisioned machines are not used. Most cloud providers accept the names of pre-defined provider-specific machine types (for example, GCP supports \n--machine_type=n1-standard-8\n for a GCE n1-standard-8 VM). Some cloud providers support YAML expressions that match the corresponding VM spec machine_type property in the \nYAML configs\n (for example, GCP supports \n--machine_type=\"{cpus: 1, memory: 4.5GiB}\"\n for a GCE custom VM with 1 vCPU and 4.5GiB memory). Note that the value provided by this flag will affect all provisioned machines; users who wish to provision different machine types for different roles within a single benchmark run should use the \nYAML configs\n for finer control.\n\n\n\n\n\n\n--zone\n\n\nThis flag allows you to override the default zone. See the table below.\n\n\n\n\n\n\n--data_disk_type\n\n\nType of disk to use. Names are provider-specific, but see table below.\n\n\n\n\n\n\n\n\nCloud and Zones\n\n\nThe default cloud is 'GCP', override with the \n--cloud\n flag.\nEach cloud has a default zone which you can override with the \n--zone\n flag,\nthe flag supports the same values that the corresponding Cloud CLIs take:\n\n\n\n\n\n\n\n\nCloud name\n\n\nDefault zone\n\n\nNotes\n\n\n\n\n\n\n\n\n\n\nGCP\n\n\nus-central1-a\n\n\n\n\n\n\n\n\nAWS\n\n\nus-east-1a\n\n\n\n\n\n\n\n\nAzure\n\n\nEast US\n\n\n\n\n\n\n\n\nAliCloud\n\n\nWest US\n\n\n\n\n\n\n\n\nDigitalOcean\n\n\nsfo1\n\n\nYou must use a zone that supports the features 'metadata' (for cloud config) and 'private_networking'.\n\n\n\n\n\n\nOpenStack\n\n\nnova\n\n\n\n\n\n\n\n\nCloudStack\n\n\nQC-1\n\n\n\n\n\n\n\n\nRackspace\n\n\nIAD\n\n\nOnMetal machine-types are available only in IAD zone\n\n\n\n\n\n\nKubernetes\n\n\nk8s\n\n\n\n\n\n\n\n\nProfitBricks\n\n\nZONE_1\n\n\nAdditional zones: ZONE_2\n\n\n\n\n\n\n\n\nExample:\n\n\npython pkb.py --cloud='GCP' --zone='us-central1-a' --benchmarks='iperf,ping'\n\n\n\n\nStorage Disk Types\n\n\nThe disk type names vary by provider, but the following table summarizes some\nuseful ones. Many cloud providers have more disk types beyond these options.\n\n\n\n\n\n\n\n\nCloud name\n\n\nNetwork-attached SSD\n\n\nNetwork-attached HDD\n\n\n\n\n\n\n\n\n\n\nGCP\n\n\npd-ssd\n\n\npd-standard\n\n\n\n\n\n\nAWS\n\n\ngp2\n\n\nstandard\n\n\n\n\n\n\nAzure\n\n\npremium-storage\n\n\nstandard-disk\n\n\n\n\n\n\nRackspace\n\n\ncbs-ssd\n\n\ncbs-sata\n\n\n\n\n\n\n\n\nAlso note that \n--data_disk_type=local\n tells PKB not to allocate a separate\ndisk, but to use whatever comes with the VM. This is useful with AWS instance\ntypes that come with local SSDs, or with the GCP \n--gce_num_local_ssds\n flag.\n\n\nIf an instance type comes with more than one disk, PKB uses whichever does \nnot\n\nhold the root partition. Specifically, on Azure, PKB always uses \n/dev/sdb\n as\nits scratch device.", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/documentation/getting-started/#getting-started", 
+            "text": "", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/documentation/getting-started/#installing-prerequisites", 
+            "text": "Before you can run the PerfKit Benchmaker, you will need account(s) on the\nCloud provider(s) you want to benchmark:   Google Cloud Platform  Amazon Web Services  Microsoft Azure  Alibaba Cloud  DigitalOcean  Rackspace Public Cloud  ProfitBricks   Alternatively, you will need credentials for the following, if it applies:   Kubernetes  OpenStack  CloudStack  Apache Mesos  Pre-provisioned machines   You also need the software dependencies, which are mostly command line tools and\ncredentials to access your accounts without a password.  If you are running on Windows, you will need to install GitHub Windows\nsince it includes tools like  openssl  and an  ssh  client. Alternatively you can\ninstall Cygwin since it should include the same tools.", 
+            "title": "Installing Prerequisites"
+        }, 
+        {
+            "location": "/documentation/getting-started/#python-27-and-pip", 
+            "text": "If you are running on Windows, get the latest version of Python 2.7 here . This should have pip bundled\nwith it. Make sure your  PATH  environment variable is set so that you can use\nboth  python  and  pip  on the command line (you can have the installer do it\nfor you if you select the correct option).  Most Linux distributions and recent Mac OS X version already have Python 2.7\ninstalled.\nIf Python is not installed, you can likely install it using your distribution's package manager, or see the  Python Download page .  If you need to install  pip , see  these instructions .", 
+            "title": "Python 2.7 and pip"
+        }, 
+        {
+            "location": "/documentation/getting-started/#install-github-windows-windows-only", 
+            "text": "Instructions: https://windows.github.com/  Make sure that  openssl / ssh / scp / ssh-keygen  are on your path (you will need to update the  PATH  environment variable).\nThe path to these commands should be  C:\\Users\\ user \\AppData\\Local\\GitHub\\PortableGit_ guid \\bin", 
+            "title": "Install GitHub Windows - Windows Only"
+        }, 
+        {
+            "location": "/documentation/getting-started/#downloading-perfkit-benchmarker", 
+            "text": "", 
+            "title": "Downloading PerfKit Benchmarker"
+        }, 
+        {
+            "location": "/documentation/getting-started/#download-packaged-release", 
+            "text": "The packaged releases are available for download from the  GitHub Perfkit Benchmarker releases page. \nDownload the latest release and extract the compressed file.", 
+            "title": "Download packaged release"
+        }, 
+        {
+            "location": "/documentation/getting-started/#download-latest-from-source", 
+            "text": "Download the PerfKit Benchmarker source code by cloning the GitHub repository.    git clone https://github.com/GoogleCloudPlatform/PerfKitBenchmarker.git\n  cd PerfKitBenchmarker", 
+            "title": "Download latest from source"
+        }, 
+        {
+            "location": "/documentation/getting-started/#installation", 
+            "text": "After downloading PerfKit Benchmarker, simply install the  pip  dependencies\nusing the  requirements.txt  file. A virtualenv is recommended.    cd /path/to/PerfKitBenchmarker\n  sudo pip install -r requirements.txt", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/documentation/getting-started/#cloud-cli-setup", 
+            "text": "PerfKit Benchmarker can run benchmarks both on Cloud Providers (GCP,\nAWS, Azure, DigitalOcean, etc) as well as any \"machine\" you can SSH into.  To quickly get started benchmarking the Google Cloud Platform:", 
+            "title": "Cloud CLI Setup"
+        }, 
+        {
+            "location": "/documentation/getting-started/#install-gcloud-and-setup-authentication", 
+            "text": "Instructions:  https://developers.google.com/cloud/sdk/  If you're using OS X or Linux you can run the command below.  When prompted pick the local folder, then Python project, then the defaults for all the rest    curl https://sdk.cloud.google.com | bash  Restart your shell window (or logout/ssh again if running on a VM)  On Windows, visit the same page and follow the Windows installation instructions on the page.  Set your credentials up:  https://developers.google.com/cloud/sdk/gcloud/#gcloud.auth  Run the command below.\nIt will print a web page URL. Navigate there, authorize the gcloud instance you just installed to use the services\nit lists, copy the access token and give it to the shell prompt.    gcloud auth login  You will need a project ID before you can run. Please navigate to https://console.developers.google.com  and create one.", 
+            "title": "Install gcloud and setup authentication"
+        }, 
+        {
+            "location": "/documentation/getting-started/#other-cloud-systems", 
+            "text": "For instructions on how to configure PerfKit Benchmarker  and run a benchmark\nfor other cloud systems see:   Amazon Web Services  Microsoft Azure  Alibaba Cloud  DigitalOcean  Rackspace Public Cloud  ProfitBricks  Kubernetes  OpenStack  CloudStack  Apache Mesos  Pre-provisioned machines", 
+            "title": "Other Cloud Systems"
+        }, 
+        {
+            "location": "/documentation/getting-started/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/getting-started/#example-run-on-gcp", 
+            "text": "python pkb.py --project= GCP project ID  --benchmarks='iperf' --machine_type='f1-micro'  For a list of all available benchmarks see  Benchmarks .", 
+            "title": "Example run on GCP"
+        }, 
+        {
+            "location": "/documentation/getting-started/#running-a-benchmark-set", 
+            "text": "Benchmark set is a grouping of one or more benchmarks that can be sequentially\nexecuted one after the other. For more info on benchmark sets see  Benchmark Sets .", 
+            "title": "Running a Benchmark Set"
+        }, 
+        {
+            "location": "/documentation/getting-started/#example-run-on-gcp_1", 
+            "text": "python pkb.py --project= GCP project ID  --benchmarks='standard_set' \\\n                --machine_type='f1-micro'", 
+            "title": "Example run on GCP"
+        }, 
+        {
+            "location": "/documentation/getting-started/#useful-global-flags", 
+            "text": "The following are some common flags used when configuring\nPerfKit Benchmarker.     Flag  Notes      --help  see all flags    --benchmarks  A comma separated list of benchmarks or benchmark sets to run such as  --benchmarks=iperf,ping  . To see the full list, run  ./pkb.py --help    --cloud  Cloud where the benchmarks are run. See the table below for choices.    --machine_type  Type of machine to provision if pre-provisioned machines are not used. Most cloud providers accept the names of pre-defined provider-specific machine types (for example, GCP supports  --machine_type=n1-standard-8  for a GCE n1-standard-8 VM). Some cloud providers support YAML expressions that match the corresponding VM spec machine_type property in the  YAML configs  (for example, GCP supports  --machine_type=\"{cpus: 1, memory: 4.5GiB}\"  for a GCE custom VM with 1 vCPU and 4.5GiB memory). Note that the value provided by this flag will affect all provisioned machines; users who wish to provision different machine types for different roles within a single benchmark run should use the  YAML configs  for finer control.    --zone  This flag allows you to override the default zone. See the table below.    --data_disk_type  Type of disk to use. Names are provider-specific, but see table below.", 
+            "title": "Useful Global Flags"
+        }, 
+        {
+            "location": "/documentation/getting-started/#cloud-and-zones", 
+            "text": "The default cloud is 'GCP', override with the  --cloud  flag.\nEach cloud has a default zone which you can override with the  --zone  flag,\nthe flag supports the same values that the corresponding Cloud CLIs take:     Cloud name  Default zone  Notes      GCP  us-central1-a     AWS  us-east-1a     Azure  East US     AliCloud  West US     DigitalOcean  sfo1  You must use a zone that supports the features 'metadata' (for cloud config) and 'private_networking'.    OpenStack  nova     CloudStack  QC-1     Rackspace  IAD  OnMetal machine-types are available only in IAD zone    Kubernetes  k8s     ProfitBricks  ZONE_1  Additional zones: ZONE_2     Example:  python pkb.py --cloud='GCP' --zone='us-central1-a' --benchmarks='iperf,ping'", 
+            "title": "Cloud and Zones"
+        }, 
+        {
+            "location": "/documentation/getting-started/#storage-disk-types", 
+            "text": "The disk type names vary by provider, but the following table summarizes some\nuseful ones. Many cloud providers have more disk types beyond these options.     Cloud name  Network-attached SSD  Network-attached HDD      GCP  pd-ssd  pd-standard    AWS  gp2  standard    Azure  premium-storage  standard-disk    Rackspace  cbs-ssd  cbs-sata     Also note that  --data_disk_type=local  tells PKB not to allocate a separate\ndisk, but to use whatever comes with the VM. This is useful with AWS instance\ntypes that come with local SSDs, or with the GCP  --gce_num_local_ssds  flag.  If an instance type comes with more than one disk, PKB uses whichever does  not \nhold the root partition. Specifically, on Azure, PKB always uses  /dev/sdb  as\nits scratch device.", 
+            "title": "Storage Disk Types"
+        }, 
+        {
+            "location": "/documentation/providers/gcp/", 
+            "text": "Google Cloud Platform\n\n\nInstall gcloud and setup authentication\n\n\n\n\nInstructions: \nhttps://developers.google.com/cloud/sdk/\n\n\nIf you're using OS X or Linux you can run the command below.\n\n\nWhen prompted pick the local folder, then Python project, then the defaults for all the rest\n\n\n  curl https://sdk.cloud.google.com | bash\n\n\n\n\nRestart your shell window (or logout/ssh again if running on a VM)\n\n\nOn Windows, visit the same page and follow the Windows installation instructions on the page.\n\n\nSet your credentials up: \nhttps://developers.google.com/cloud/sdk/gcloud/#gcloud.auth\n\n\nRun the command below.\nIt will print a web page URL. Navigate there, authorize the gcloud instance you just installed to use the services\nit lists, copy the access token and give it to the shell prompt.\n\n\n  gcloud auth login\n\n\n\n\nYou will need a project ID before you can run. Please navigate to\n\nhttps://console.developers.google.com\n and create one.", 
+            "title": "Google Cloud Platform"
+        }, 
+        {
+            "location": "/documentation/providers/gcp/#google-cloud-platform", 
+            "text": "", 
+            "title": "Google Cloud Platform"
+        }, 
+        {
+            "location": "/documentation/providers/gcp/#install-gcloud-and-setup-authentication", 
+            "text": "Instructions:  https://developers.google.com/cloud/sdk/  If you're using OS X or Linux you can run the command below.  When prompted pick the local folder, then Python project, then the defaults for all the rest    curl https://sdk.cloud.google.com | bash  Restart your shell window (or logout/ssh again if running on a VM)  On Windows, visit the same page and follow the Windows installation instructions on the page.  Set your credentials up:  https://developers.google.com/cloud/sdk/gcloud/#gcloud.auth  Run the command below.\nIt will print a web page URL. Navigate there, authorize the gcloud instance you just installed to use the services\nit lists, copy the access token and give it to the shell prompt.    gcloud auth login  You will need a project ID before you can run. Please navigate to https://console.developers.google.com  and create one.", 
+            "title": "Install gcloud and setup authentication"
+        }, 
+        {
+            "location": "/documentation/providers/aws/", 
+            "text": "Amazon Web Services\n\n\nInstall AWS CLI and setup authentication\n\n\nMake sure you have installed pip (see the section above).\n\n\nFollow instructions at http://aws.amazon.com/cli/ or run the following command (omit the 'sudo' on Windows)\n\n\n  sudo pip install awscli\n\n\n\n\nNavigate to the AWS console to create access credentials: https://console.aws.amazon.com/ec2/\n\n On the console click on your name (top left)\n\n Click on \"Security Credentials\"\n* Click on \"Access Keys\", the create New Access Key. Download the file, it contains the Access key and Secret keys\n  to access services. Note the values and delete the file.\n\n\nConfigure the CLI using the keys from the previous step\n\n\n  aws configure\n\n\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on AWS\n\n\n  python pkb.py --cloud=AWS --benchmarks=iperf --machine_type=t1.micro", 
+            "title": "Amazon Web Services"
+        }, 
+        {
+            "location": "/documentation/providers/aws/#amazon-web-services", 
+            "text": "", 
+            "title": "Amazon Web Services"
+        }, 
+        {
+            "location": "/documentation/providers/aws/#install-aws-cli-and-setup-authentication", 
+            "text": "Make sure you have installed pip (see the section above).  Follow instructions at http://aws.amazon.com/cli/ or run the following command (omit the 'sudo' on Windows)    sudo pip install awscli  Navigate to the AWS console to create access credentials: https://console.aws.amazon.com/ec2/  On the console click on your name (top left)  Click on \"Security Credentials\"\n* Click on \"Access Keys\", the create New Access Key. Download the file, it contains the Access key and Secret keys\n  to access services. Note the values and delete the file.  Configure the CLI using the keys from the previous step    aws configure", 
+            "title": "Install AWS CLI and setup authentication"
+        }, 
+        {
+            "location": "/documentation/providers/aws/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/aws/#example-run-on-aws", 
+            "text": "python pkb.py --cloud=AWS --benchmarks=iperf --machine_type=t1.micro", 
+            "title": "Example run on AWS"
+        }, 
+        {
+            "location": "/documentation/providers/azure/", 
+            "text": "Microsoft Azure\n\n\nWindows Azure CLI and credentials\n\n\nYou first need to install node.js and NPM.\nThis version of Perfkit Benchmarker is compatible with azure version 0.9.9.\n\n\nGo \nhere\n, and follow the setup instructions.\n\n\nNext, run the following (omit the \nsudo\n on Windows):\n\n\n  sudo npm install azure-cli@0.9.9 -g\n  azure account download\n\n\n\n\nRead the output of the previous command. It will contain a webpage URL. Open that in a browser. It will download\na file (\n.publishsettings\n) file. Copy to the folder you're running PerfKit Benchmarker. In my case the file was called\n\nFree Trial-7-18-2014-credentials.publishsettings\n\n\n  azure account import [path to .publishsettings file]\n\n\n\n\nTest that azure is installed correctly\n\n\n  azure vm list\n\n\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on Azure\n\n\n  python pkb.py --cloud=Azure --machine_type=ExtraSmall --benchmarks=iperf", 
+            "title": "Microsoft Azure"
+        }, 
+        {
+            "location": "/documentation/providers/azure/#microsoft-azure", 
+            "text": "", 
+            "title": "Microsoft Azure"
+        }, 
+        {
+            "location": "/documentation/providers/azure/#windows-azure-cli-and-credentials", 
+            "text": "You first need to install node.js and NPM.\nThis version of Perfkit Benchmarker is compatible with azure version 0.9.9.  Go  here , and follow the setup instructions.  Next, run the following (omit the  sudo  on Windows):    sudo npm install azure-cli@0.9.9 -g\n  azure account download  Read the output of the previous command. It will contain a webpage URL. Open that in a browser. It will download\na file ( .publishsettings ) file. Copy to the folder you're running PerfKit Benchmarker. In my case the file was called Free Trial-7-18-2014-credentials.publishsettings    azure account import [path to .publishsettings file]  Test that azure is installed correctly    azure vm list", 
+            "title": "Windows Azure CLI and credentials"
+        }, 
+        {
+            "location": "/documentation/providers/azure/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/azure/#example-run-on-azure", 
+            "text": "python pkb.py --cloud=Azure --machine_type=ExtraSmall --benchmarks=iperf", 
+            "title": "Example run on Azure"
+        }, 
+        {
+            "location": "/documentation/providers/alicloud/", 
+            "text": "AliCloud\n\n\nInstall AliCloud CLI and setup authentication\n\n\n\n\nMake sure you have installed pip (see the section above).\n\n\nRun the following command to install aliyuncli(omit the \u2018sudo\u2019 on Windows)\n\n\n1. Install python development tools:\nIn Debian or Ubuntu:\n\n\n  sudo apt-get install -y python-dev\n\n\n\n\nIn CentOS:\n\n\n  sudo yum install python-devel\n\n\n\n\n2. Install aliyuncli tool and python SDK for ECS:\n\n\n  sudo pip install aliyuncli\n\n\n\n\nTo check if AliCloud is installed:\n\n\n  aliyuncli --help\n\n\n\n\nInstall python SDK for ECS:\n\n\n  sudo pip install aliyun-python-sdk-ecs\n\n\n\n\nCheck if aliyuncli ecs command is ready:\n\n\n  aliyuncli ecs help\n\n\n\n\nIf you see the \"usage\" message, you should follow step 3.\nOtherwise, jump to step 4.\n\n\n3. Dealing with an exception when it runs on some specific version of Ubuntu\nGet the python lib path: \n/usr/lib/python2.7/dist-packages\n\n\n$ python\n\n from distutils.sysconfig import get_python_lib\n\n get_python_lib()\n'/usr/lib/python2.7/dist-packages'\n\n\n\n\nCopy to the right directory(for the python version 2.7.X):\n\n\n  sudo cp -r /usr/local/lib/python2.7/dist-packages/aliyun* /usr/lib/python2.7/dist-packages/\n\n\n\n\nCheck again:\n\n\n  aliyuncli ecs help\n\n\n\n\n4. Navigate to the AliCloud console to create access credentials:\n \nhttps://home.console.aliyun.com/#/\n\n * Login first\n * Click on \"AccessKeys\" (top right)\n * Click on \"Create Access Key\", copy and store the \"Access Key ID\" and \"Access Key Secret\" to a safe place.\n\n\nConfigure the CLI using the Access Key ID and Access Key Secret from the previous step\n\n\n  aliyuncli configure\n\n\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on AliCloud\n\n\n  python pkb.py --cloud=AliCloud --machine_type=ecs.s2.large --benchmarks=iperf", 
+            "title": "AliCloud"
+        }, 
+        {
+            "location": "/documentation/providers/alicloud/#alicloud", 
+            "text": "", 
+            "title": "AliCloud"
+        }, 
+        {
+            "location": "/documentation/providers/alicloud/#install-alicloud-cli-and-setup-authentication", 
+            "text": "Make sure you have installed pip (see the section above).  Run the following command to install aliyuncli(omit the \u2018sudo\u2019 on Windows)  1. Install python development tools:\nIn Debian or Ubuntu:    sudo apt-get install -y python-dev  In CentOS:    sudo yum install python-devel  2. Install aliyuncli tool and python SDK for ECS:    sudo pip install aliyuncli  To check if AliCloud is installed:    aliyuncli --help  Install python SDK for ECS:    sudo pip install aliyun-python-sdk-ecs  Check if aliyuncli ecs command is ready:    aliyuncli ecs help  If you see the \"usage\" message, you should follow step 3.\nOtherwise, jump to step 4.  3. Dealing with an exception when it runs on some specific version of Ubuntu\nGet the python lib path:  /usr/lib/python2.7/dist-packages  $ python  from distutils.sysconfig import get_python_lib  get_python_lib()\n'/usr/lib/python2.7/dist-packages'  Copy to the right directory(for the python version 2.7.X):    sudo cp -r /usr/local/lib/python2.7/dist-packages/aliyun* /usr/lib/python2.7/dist-packages/  Check again:    aliyuncli ecs help  4. Navigate to the AliCloud console to create access credentials:\n  https://home.console.aliyun.com/#/ \n * Login first\n * Click on \"AccessKeys\" (top right)\n * Click on \"Create Access Key\", copy and store the \"Access Key ID\" and \"Access Key Secret\" to a safe place.  Configure the CLI using the Access Key ID and Access Key Secret from the previous step    aliyuncli configure", 
+            "title": "Install AliCloud CLI and setup authentication"
+        }, 
+        {
+            "location": "/documentation/providers/alicloud/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/alicloud/#example-run-on-alicloud", 
+            "text": "python pkb.py --cloud=AliCloud --machine_type=ecs.s2.large --benchmarks=iperf", 
+            "title": "Example run on AliCloud"
+        }, 
+        {
+            "location": "/documentation/providers/digitalocean/", 
+            "text": "Digital Ocean\n\n\nDigitalOcean configuration and credentials\n\n\n\n\nPerfKitBenchmarker uses the \ncurl\n tool to interact with\nDigitalOcean's REST API. This API uses oauth for authentication.\nPlease set this up as follows:\n\n\nLog in to your DigitalOcean account and create a Personal Access Token\nfor use by PerfKitBenchmarker with read/write access in Settings /\nAPI: https://cloud.digitalocean.com/settings/applications\n\n\nSave a copy of the authentication token it shows, this is a\n64-character hex string.\n\n\nCreate a curl configuration file containing the needed authorization\nheader. The double quotes are required. Example:\n\n\n  cat \n ~/.config/digitalocean-oauth.curl\n  header = \nAuthorization: Bearer 9876543210fedc...ba98765432\n\n  ^D\n\n\n\n\nConfirm that the authentication works:\n\n\n  curl --config ~/.config/digitalocean-oauth.curl https://api.digitalocean.com/v2/sizes\n  {\nsizes\n:[{\nslug\n:\n512mb\n,\nmemory\n:512,\nvcpus\n:1, ... }]}\n\n\n\n\nPerfKitBenchmarker uses the file location \n~/.config/digitalocean-oauth.curl\n\nby default, you can use the \n--digitalocean_curl_config\n flag to\noverride the path.\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on DigitalOcean\n\n\n  python pkb.py --cloud=DigitalOcean --machine_type=16gb --benchmarks=iperf", 
+            "title": "Digital Ocean"
+        }, 
+        {
+            "location": "/documentation/providers/digitalocean/#digital-ocean", 
+            "text": "", 
+            "title": "Digital Ocean"
+        }, 
+        {
+            "location": "/documentation/providers/digitalocean/#digitalocean-configuration-and-credentials", 
+            "text": "PerfKitBenchmarker uses the  curl  tool to interact with\nDigitalOcean's REST API. This API uses oauth for authentication.\nPlease set this up as follows:  Log in to your DigitalOcean account and create a Personal Access Token\nfor use by PerfKitBenchmarker with read/write access in Settings /\nAPI: https://cloud.digitalocean.com/settings/applications  Save a copy of the authentication token it shows, this is a\n64-character hex string.  Create a curl configuration file containing the needed authorization\nheader. The double quotes are required. Example:    cat   ~/.config/digitalocean-oauth.curl\n  header =  Authorization: Bearer 9876543210fedc...ba98765432 \n  ^D  Confirm that the authentication works:    curl --config ~/.config/digitalocean-oauth.curl https://api.digitalocean.com/v2/sizes\n  { sizes :[{ slug : 512mb , memory :512, vcpus :1, ... }]}  PerfKitBenchmarker uses the file location  ~/.config/digitalocean-oauth.curl \nby default, you can use the  --digitalocean_curl_config  flag to\noverride the path.", 
+            "title": "DigitalOcean configuration and credentials"
+        }, 
+        {
+            "location": "/documentation/providers/digitalocean/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/digitalocean/#example-run-on-digitalocean", 
+            "text": "python pkb.py --cloud=DigitalOcean --machine_type=16gb --benchmarks=iperf", 
+            "title": "Example run on DigitalOcean"
+        }, 
+        {
+            "location": "/documentation/providers/rackspace/", 
+            "text": "Rackspace Public Cloud\n\n\nInstalling CLIs and credentials for Rackspace\n\n\nIn order to interact with the Rackspace Public Cloud, PerfKitBenchmarker makes\nuse of RackCLI. You can find the instructions to install and configure RackCLI here:\n\nhttps://developer.rackspace.com/docs/rack-cli/\n\n\nTo run PerfKit Benchmarker against Rackspace is very easy. Simply make sure\nRack CLI is installed and available in your \nPATH\n, optionally use the flag\n\n--rack_path\n to indicate the path to the binary.\n\n\nFor a Rackspace UK Public Cloud account, unless it's your default RackCLI profile then it's\nrecommended that you create a profile for your UK account. Once configured, use flag\n\n--profile\n to specify which RackCLI profile to use. You can find more details here:\n\nhttps://developer.rackspace.com/docs/rack-cli/configuration/#config-file\n\n\nNote: Not all flavors are supported on every region. Always check first if the flavor is supported in the region.\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on Rackspace\n\n\n  python pkb.py --cloud=Rackspace --machine_type=general1-2 --benchmarks=iperf", 
+            "title": "Rackspace Public Cloud"
+        }, 
+        {
+            "location": "/documentation/providers/rackspace/#rackspace-public-cloud", 
+            "text": "", 
+            "title": "Rackspace Public Cloud"
+        }, 
+        {
+            "location": "/documentation/providers/rackspace/#installing-clis-and-credentials-for-rackspace", 
+            "text": "In order to interact with the Rackspace Public Cloud, PerfKitBenchmarker makes\nuse of RackCLI. You can find the instructions to install and configure RackCLI here: https://developer.rackspace.com/docs/rack-cli/  To run PerfKit Benchmarker against Rackspace is very easy. Simply make sure\nRack CLI is installed and available in your  PATH , optionally use the flag --rack_path  to indicate the path to the binary.  For a Rackspace UK Public Cloud account, unless it's your default RackCLI profile then it's\nrecommended that you create a profile for your UK account. Once configured, use flag --profile  to specify which RackCLI profile to use. You can find more details here: https://developer.rackspace.com/docs/rack-cli/configuration/#config-file  Note: Not all flavors are supported on every region. Always check first if the flavor is supported in the region.", 
+            "title": "Installing CLIs and credentials for Rackspace"
+        }, 
+        {
+            "location": "/documentation/providers/rackspace/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/rackspace/#example-run-on-rackspace", 
+            "text": "python pkb.py --cloud=Rackspace --machine_type=general1-2 --benchmarks=iperf", 
+            "title": "Example run on Rackspace"
+        }, 
+        {
+            "location": "/documentation/providers/profitbricks/", 
+            "text": "ProfitBricks\n\n\nProfitBricks configuration and credentials\n\n\n\n\nGet started by running:\n\n\n  sudo pip install -r perfkitbenchmarker/providers/profitbricks/requirements.txt\n\n\n\n\nPerfKit Benchmarker uses the\n\nRequests\n module\nto interact with ProfitBricks' REST API. HTTP Basic authentication is used\nto authorize access to the API. Please set this up as follows:\n\n\nCreate a configuration file containing the email address and password\nassociated with your ProfitBricks account, separated by a colon.\nExample:\n\n\nless ~/.config/profitbricks-auth.cfg\nemail:password\n\n\n\n\nThe PerfKit Benchmarker will automatically base64 encode your credentials\nbefore making any calls to the REST API.\n\n\nPerfKit Benchmarker uses the file location \n~/.config/profitbricks-auth.cfg\n\nby default. You can use the \n--profitbricks_config\n flag to\noverride the path.\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on ProfitBricks\n\n\npython pkb.py --cloud=ProfitBricks --machine_type=Small --benchmarks=iperf", 
+            "title": "ProfitBricks"
+        }, 
+        {
+            "location": "/documentation/providers/profitbricks/#profitbricks", 
+            "text": "", 
+            "title": "ProfitBricks"
+        }, 
+        {
+            "location": "/documentation/providers/profitbricks/#profitbricks-configuration-and-credentials", 
+            "text": "Get started by running:    sudo pip install -r perfkitbenchmarker/providers/profitbricks/requirements.txt  PerfKit Benchmarker uses the Requests  module\nto interact with ProfitBricks' REST API. HTTP Basic authentication is used\nto authorize access to the API. Please set this up as follows:  Create a configuration file containing the email address and password\nassociated with your ProfitBricks account, separated by a colon.\nExample:  less ~/.config/profitbricks-auth.cfg\nemail:password  The PerfKit Benchmarker will automatically base64 encode your credentials\nbefore making any calls to the REST API.  PerfKit Benchmarker uses the file location  ~/.config/profitbricks-auth.cfg \nby default. You can use the  --profitbricks_config  flag to\noverride the path.", 
+            "title": "ProfitBricks configuration and credentials"
+        }, 
+        {
+            "location": "/documentation/providers/profitbricks/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/profitbricks/#example-run-on-profitbricks", 
+            "text": "python pkb.py --cloud=ProfitBricks --machine_type=Small --benchmarks=iperf", 
+            "title": "Example run on ProfitBricks"
+        }, 
+        {
+            "location": "/documentation/providers/kubernetes/", 
+            "text": "Kubernetes\n\n\nKubernetes configuration and credentials\n\n\n\n\nPerfkit uses \nkubectl\n binary in order to communicate with Kubernetes cluster - you need to pass the path to \nkubectl\n binary using \n--kubectl\n flag. It's recommended to use version 1.0.1 (available to download here: \nhttps://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubectl\n).\nAuthentication to Kubernetes cluster is done via \nkubeconfig\n file (\nhttps://github.com/kubernetes/kubernetes/blob/release-1.0/docs/user-guide/kubeconfig-file.md\n). Its path is passed using \n--kubeconfig\n flag.\n\n\nImage prerequisites\n  \n\n\nDocker instances by default don't allow to SSH into them. Thus it is important to configure your Docker image so that it has SSH server installed. You can use your own image or build a new one based on a Dockerfile placed in tools/docker_images directory - in this case please refer to \nhttps://github.com/GoogleCloudPlatform/PerfKitBenchmarker/tree/master/tools/docker_images\n document.\n\n\nKubernetes cluster configuration\n\nIf your Kubernetes cluster is running on CoreOS:\n\n\n1. Fix \n$PATH\n environment variable so that the appropriate binaries can be found:\n\n\n  sudo mkdir /etc/systemd/system/kubelet.service.d\n  sudo vim /etc/systemd/system/kubelet.service.d/10-env.conf\n\n\n\n\n2. Add the following line to \n[Service]\n section:\n\n\n  Environment=PATH=/opt/bin:/usr/bin:/usr/sbin:$PATH\n\n\n\n\n3. Reboot the node:\n\n\n  sudo reboot\n\n\n\n\nNote that some benchmark require to run within a privileged container. By default Kubernetes doesn't allow to schedule Dockers in privileged mode - you have to add \n--allow-privileged=true\n flag to \nkube-apiserver\n and each \nkubelet\n startup commands.\n\n\nCeph integration\n\nWhen you run benchmarks with standard scratch disk type (\n--scratch_disk_type=standard\n - which is a default option), Ceph storage will be used. There are some configuration steps you need to follow before you will be able to spawn Kubernetes PODs with Ceph volume. On each of Kubernetes-Nodes and on the machine which is running Perfkit benchmarks do the following:\n\n\n1. Copy \n/etc/ceph\n directory from Ceph-host\n\n2. Install \nceph-common\n package so that \nrbd\n command is available\n\n\n\n\nIf your Kubernetes cluster is running on CoreOS, then you need to create a bash script called \nrbd\n which will run \nrbd\n command inside a Docker container:\n\n\n\n\n    #!/usr/bin/bash\n    /usr/bin/docker run -v /etc/ceph:/etc/ceph -v /dev:/dev -v /sys:/sys \\\n                  --net=host --privileged=true --rm=true ceph/rbd $@\n\n\n\n\nSave the file as 'rbd'. Then:\n\n\n  chmod +x rbd\n  sudo mkdir /opt/bin\n  sudo cp rbd /opt/bin\n\n\n\n\nInstall \nrbdmap\n (https://github.com/ceph/ceph-docker/tree/master/examples/coreos/rbdmap):\n\n\n  git clone https://github.com/ceph/ceph-docker.git\n  cd ceph-docker/examples/coreos/rbdmap/\n  sudo mkdir /opt/sbin\n  sudo cp rbdmap /opt/sbin\n  sudo cp ceph-rbdnamer /opt/bin\n  sudo cp 50-rbd.rules /etc/udev/rules.d\n  sudo reboot\n\n\n\n\nYou have two Ceph authentication options available (http://kubernetes.io/v1.0/examples/rbd/README.html):\n\n\n\n\nKeyring - pass the path to the keyring file using \n--ceph_keyring\n flag\n\n\nSecret. In this case you have to create a secret first:\n\n\n\n\nRetrieve base64-encoded Ceph admin key:\n\n\n   ceph auth get-key client.admin | base64\n   QVFEYnpPWlZWWnJLQVJBQXdtNDZrUDlJUFo3OXdSenBVTUdYNHc9PQ==  \n\n\n\n\nCreate a file called \ncreate_ceph_admin.yml\n and replace the \nkey\n value with the output from the previous command:\n\n\n  apiVersion: v1\n  kind: Secret\n  metadata:\n    name: my-ceph-secret\n  data:\n    key: QVFEYnpPWlZWWnJLQVJBQXdtNDZrUDlJUFo3OXdSenBVTUdYNHc9PQ==\n\n\n\n\nAdd secret to Kubernetes:  \n\n\n   kubectl create -f create_ceph_admin.yml\n\n\n\n\nYou will have to pass the Secret name (using \n--ceph_secret\n flag) when running the benchmakrs. In this case it should be: \n--ceph_secret=my-ceph-secret\n.\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on Kubernetes\n\n\npython pkb.py --cloud=Kubernetes --benchmarks=iperf --kubectl=/path/to/kubectl \\\n              --kubeconfig=/path/to/kubeconfig --image=image-with-ssh-server \\\n              --ceph_monitors=10.20.30.40:6789,10.20.30.41:6789 \\\n              --kubernetes_nodes=10.20.30.42,10.20.30.43", 
+            "title": "Kubernetes"
+        }, 
+        {
+            "location": "/documentation/providers/kubernetes/#kubernetes", 
+            "text": "", 
+            "title": "Kubernetes"
+        }, 
+        {
+            "location": "/documentation/providers/kubernetes/#kubernetes-configuration-and-credentials", 
+            "text": "Perfkit uses  kubectl  binary in order to communicate with Kubernetes cluster - you need to pass the path to  kubectl  binary using  --kubectl  flag. It's recommended to use version 1.0.1 (available to download here:  https://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubectl ).\nAuthentication to Kubernetes cluster is done via  kubeconfig  file ( https://github.com/kubernetes/kubernetes/blob/release-1.0/docs/user-guide/kubeconfig-file.md ). Its path is passed using  --kubeconfig  flag.  Image prerequisites     Docker instances by default don't allow to SSH into them. Thus it is important to configure your Docker image so that it has SSH server installed. You can use your own image or build a new one based on a Dockerfile placed in tools/docker_images directory - in this case please refer to  https://github.com/GoogleCloudPlatform/PerfKitBenchmarker/tree/master/tools/docker_images  document.  Kubernetes cluster configuration \nIf your Kubernetes cluster is running on CoreOS:  1. Fix  $PATH  environment variable so that the appropriate binaries can be found:    sudo mkdir /etc/systemd/system/kubelet.service.d\n  sudo vim /etc/systemd/system/kubelet.service.d/10-env.conf  2. Add the following line to  [Service]  section:    Environment=PATH=/opt/bin:/usr/bin:/usr/sbin:$PATH  3. Reboot the node:    sudo reboot  Note that some benchmark require to run within a privileged container. By default Kubernetes doesn't allow to schedule Dockers in privileged mode - you have to add  --allow-privileged=true  flag to  kube-apiserver  and each  kubelet  startup commands.  Ceph integration \nWhen you run benchmarks with standard scratch disk type ( --scratch_disk_type=standard  - which is a default option), Ceph storage will be used. There are some configuration steps you need to follow before you will be able to spawn Kubernetes PODs with Ceph volume. On each of Kubernetes-Nodes and on the machine which is running Perfkit benchmarks do the following:  1. Copy  /etc/ceph  directory from Ceph-host \n2. Install  ceph-common  package so that  rbd  command is available   If your Kubernetes cluster is running on CoreOS, then you need to create a bash script called  rbd  which will run  rbd  command inside a Docker container:       #!/usr/bin/bash\n    /usr/bin/docker run -v /etc/ceph:/etc/ceph -v /dev:/dev -v /sys:/sys \\\n                  --net=host --privileged=true --rm=true ceph/rbd $@  Save the file as 'rbd'. Then:    chmod +x rbd\n  sudo mkdir /opt/bin\n  sudo cp rbd /opt/bin  Install  rbdmap  (https://github.com/ceph/ceph-docker/tree/master/examples/coreos/rbdmap):    git clone https://github.com/ceph/ceph-docker.git\n  cd ceph-docker/examples/coreos/rbdmap/\n  sudo mkdir /opt/sbin\n  sudo cp rbdmap /opt/sbin\n  sudo cp ceph-rbdnamer /opt/bin\n  sudo cp 50-rbd.rules /etc/udev/rules.d\n  sudo reboot  You have two Ceph authentication options available (http://kubernetes.io/v1.0/examples/rbd/README.html):   Keyring - pass the path to the keyring file using  --ceph_keyring  flag  Secret. In this case you have to create a secret first:   Retrieve base64-encoded Ceph admin key:     ceph auth get-key client.admin | base64\n   QVFEYnpPWlZWWnJLQVJBQXdtNDZrUDlJUFo3OXdSenBVTUdYNHc9PQ==    Create a file called  create_ceph_admin.yml  and replace the  key  value with the output from the previous command:    apiVersion: v1\n  kind: Secret\n  metadata:\n    name: my-ceph-secret\n  data:\n    key: QVFEYnpPWlZWWnJLQVJBQXdtNDZrUDlJUFo3OXdSenBVTUdYNHc9PQ==  Add secret to Kubernetes:       kubectl create -f create_ceph_admin.yml  You will have to pass the Secret name (using  --ceph_secret  flag) when running the benchmakrs. In this case it should be:  --ceph_secret=my-ceph-secret .", 
+            "title": "Kubernetes configuration and credentials"
+        }, 
+        {
+            "location": "/documentation/providers/kubernetes/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/kubernetes/#example-run-on-kubernetes", 
+            "text": "python pkb.py --cloud=Kubernetes --benchmarks=iperf --kubectl=/path/to/kubectl \\\n              --kubeconfig=/path/to/kubeconfig --image=image-with-ssh-server \\\n              --ceph_monitors=10.20.30.40:6789,10.20.30.41:6789 \\\n              --kubernetes_nodes=10.20.30.42,10.20.30.43", 
+            "title": "Example run on Kubernetes"
+        }, 
+        {
+            "location": "/documentation/providers/openstack/", 
+            "text": "OpenStack\n\n\nInstall OpenStack CLI client and setup authentication\n\n\n\n\nInstall OpenStack CLI utilities via the following command:\n\n\n  sudo pip install -r perfkitbenchmarker/providers/openstack/requirements.txt\n\n\n\n\nTo setup credentials and endpoint information simply set the environment\nvariables using an OpenStack RC file. For help, see \nOpenStack\n docs\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on OpenStack\n\n\n  python pkb.py --cloud=OpenStack --machine_type=m1.medium \\\n                --openstack_network=private --benchmarks=iperf", 
+            "title": "OpenStack"
+        }, 
+        {
+            "location": "/documentation/providers/openstack/#openstack", 
+            "text": "", 
+            "title": "OpenStack"
+        }, 
+        {
+            "location": "/documentation/providers/openstack/#install-openstack-cli-client-and-setup-authentication", 
+            "text": "Install OpenStack CLI utilities via the following command:    sudo pip install -r perfkitbenchmarker/providers/openstack/requirements.txt  To setup credentials and endpoint information simply set the environment\nvariables using an OpenStack RC file. For help, see  OpenStack  docs", 
+            "title": "Install OpenStack CLI client and setup authentication"
+        }, 
+        {
+            "location": "/documentation/providers/openstack/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/openstack/#example-run-on-openstack", 
+            "text": "python pkb.py --cloud=OpenStack --machine_type=m1.medium \\\n                --openstack_network=private --benchmarks=iperf", 
+            "title": "Example run on OpenStack"
+        }, 
+        {
+            "location": "/documentation/providers/cloudstack/", 
+            "text": "CloudStack\n\n\nInstall \ncsapi\n and set the API keys\n\n\n\n\n  sudo pip install csapi\n\n\n\n\nGet the API key and SECRET from Cloudstack. Set the following environement variables.\n\n\n  export CS_API_URL=\ninsert API endpoint\n\n  export CS_API_KEY=\ninsert API key\n\n  export CS_API_SECRET=\ninsert API secret\n\n\n\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on CloudStack\n\n\nSpecify the network offering when running the benchmark. If using VPC\n(\n--cs_use_vpc\n), also specify the VPC offering (\n--cs_vpc_offering\n).\n\n\n  python pkb.py --cloud=CloudStack --benchmarks=ping \\\n                --cs_network_offering=DefaultNetworkOffering", 
+            "title": "CloudStack"
+        }, 
+        {
+            "location": "/documentation/providers/cloudstack/#cloudstack", 
+            "text": "", 
+            "title": "CloudStack"
+        }, 
+        {
+            "location": "/documentation/providers/cloudstack/#install-csapi-and-set-the-api-keys", 
+            "text": "sudo pip install csapi  Get the API key and SECRET from Cloudstack. Set the following environement variables.    export CS_API_URL= insert API endpoint \n  export CS_API_KEY= insert API key \n  export CS_API_SECRET= insert API secret", 
+            "title": "Install csapi and set the API keys"
+        }, 
+        {
+            "location": "/documentation/providers/cloudstack/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/cloudstack/#example-run-on-cloudstack", 
+            "text": "Specify the network offering when running the benchmark. If using VPC\n( --cs_use_vpc ), also specify the VPC offering ( --cs_vpc_offering ).    python pkb.py --cloud=CloudStack --benchmarks=ping \\\n                --cs_network_offering=DefaultNetworkOffering", 
+            "title": "Example run on CloudStack"
+        }, 
+        {
+            "location": "/documentation/providers/mesos/", 
+            "text": "Apache Mesos\n\n\nMesos configuration\n\n\n\n\nMesos provider communicates with Marathon framework in order to manage Docker instances. Thus it is required to setup Marathon framework along with the Mesos cluster. In order to connect to Mesos you need to provide IP address and port to Marathon framework using \n--marathon_address\n flag.\n\n\nProvider has been tested with Mesos v0.24.1 and Marathon v0.11.1.\n\n\nOverlay network\n\nMesos on its own doesn't provide any solution for overlay networking. You need to configure your cluster so that the instances will live in the same network. For this purpose you may use Flannel, Calico, Weave, etc.\n\n\nMesos cluster configuration\n\nMake sure your Mesos-slave nodes are reachable (by hostname) from the machine which is used to run the benchmarks. In case they are not, edit the \n/etc/hosts\n file appropriately.\n\n\nImage prerequisites\n\nPlease refer to the \nImage prerequisites for Docker based clouds\n.\n\n\nRunning a Single Benchmark\n\n\n\n\nExample run on Mesos\n\n\n  python pkb.py --cloud=Mesos --benchmarks=iperf \\\n                --marathon_address=localhost:8080 --image=image-with-ssh-server", 
+            "title": "Apache Mesos"
+        }, 
+        {
+            "location": "/documentation/providers/mesos/#apache-mesos", 
+            "text": "", 
+            "title": "Apache Mesos"
+        }, 
+        {
+            "location": "/documentation/providers/mesos/#mesos-configuration", 
+            "text": "Mesos provider communicates with Marathon framework in order to manage Docker instances. Thus it is required to setup Marathon framework along with the Mesos cluster. In order to connect to Mesos you need to provide IP address and port to Marathon framework using  --marathon_address  flag.  Provider has been tested with Mesos v0.24.1 and Marathon v0.11.1.  Overlay network \nMesos on its own doesn't provide any solution for overlay networking. You need to configure your cluster so that the instances will live in the same network. For this purpose you may use Flannel, Calico, Weave, etc.  Mesos cluster configuration \nMake sure your Mesos-slave nodes are reachable (by hostname) from the machine which is used to run the benchmarks. In case they are not, edit the  /etc/hosts  file appropriately.  Image prerequisites \nPlease refer to the  Image prerequisites for Docker based clouds .", 
+            "title": "Mesos configuration"
+        }, 
+        {
+            "location": "/documentation/providers/mesos/#running-a-single-benchmark", 
+            "text": "", 
+            "title": "Running a Single Benchmark"
+        }, 
+        {
+            "location": "/documentation/providers/mesos/#example-run-on-mesos", 
+            "text": "python pkb.py --cloud=Mesos --benchmarks=iperf \\\n                --marathon_address=localhost:8080 --image=image-with-ssh-server", 
+            "title": "Example run on Mesos"
+        }, 
+        {
+            "location": "/documentation/providers/staticvm/", 
+            "text": "Pre-provisioned Machines\n\n\nHow To Run Benchmarks Without Cloud Provisioning (e.g., local workstation)\n\n\n\n\nIt is possible to run PerfKit Benchmarker without running the Cloud provisioning steps.  This is useful if you want to run on a local machine, or have a benchmark like iperf run from an external point to a Cloud VM.\n\n\nIn order to do this you need to make sure:\n\n The static (i.e. not provisioned by PerfKit Benchmarker) machine is ssh'able\n\n The user PerfKitBenchmarker will login as has 'sudo' access.\n\n\nNext, you will want to create a YAML user config file describing how to connect to the machine as follows:\n\n\nstatic_vms:\n  - \nvm1 # Using the \n character creates an anchor that we can\n         # reference later by using the same name and a * character.\n    ip_address: 170.200.60.23\n    user_name: voellm\n    ssh_private_key: /home/voellm/perfkitkeys/my_key_file.pem\n    zone: Siberia\n    disk_specs:\n      - mount_point: /data_dir\n\n\n\n\n\n\nThe \nip_address\n is the address where you want benchmarks to run.\n\n\nssh_private_key\n is where to find the private ssh key.\n\n\nzone\n can be anything you want.  It is used when publishing results.\n\n\ndisk_specs\n is used by all benchmarks which use disk (i.e., \nfio\n, \nbonnie++\n, many others).\n\n\n\n\nIn the same file, configure any number of benchmarks (in this case just iperf),\nand reference the static VM as follows:\n\n\niperf:\n  vm_groups:\n    vm_1:\n      static_vms:\n        - *vm1\n\n\n\n\nI called my file \niperf.yaml\n and used it to run iperf from Siberia to a GCP VM in us-central1-f as follows:\n\n\npython pkb.py --benchmarks=iperf --machine_type=f1-micro \\\n              --benchmark_config_file=iperf.yaml --zone=us-central1-f \\\n              --ip_addresses=EXTERNAL\n\n\n\n\n\n\nip_addresses=EXTERNAL\n tells PerfKit Benchmarker not to use 10.X (ie Internal) machine addresses that all Cloud VMs have.  Just use the external IP address.\n\n\n\n\nIf a benchmark requires two machines like iperf, you can have two machines in the same YAML file as shown below.  This means you can indeed run between two machines and never provision any VMs in the Cloud.\n\n\nstatic_vms:\n  - \nvm1\n    ip_address: \nip1\n\n    user_name: connormccoy\n    ssh_private_key: /home/connormccoy/.ssh/google_compute_engine\n    internal_ip: 10.240.223.37\n    install_packages: false\n  - \nvm2\n    ip_address: \nip2\n\n    user_name: connormccoy\n    ssh_private_key: /home/connormccoy/.ssh/google_compute_engine\n    internal_ip: 10.240.234.189\n    ssh_port: 2222\n\niperf:\n  vm_groups:\n    vm_1:\n      static_vms:\n        - *vm2\n    vm_2:\n      static_vms:\n        - *vm1", 
+            "title": "Pre-provisioned Machines"
+        }, 
+        {
+            "location": "/documentation/providers/staticvm/#pre-provisioned-machines", 
+            "text": "", 
+            "title": "Pre-provisioned Machines"
+        }, 
+        {
+            "location": "/documentation/providers/staticvm/#how-to-run-benchmarks-without-cloud-provisioning-eg-local-workstation", 
+            "text": "It is possible to run PerfKit Benchmarker without running the Cloud provisioning steps.  This is useful if you want to run on a local machine, or have a benchmark like iperf run from an external point to a Cloud VM.  In order to do this you need to make sure:  The static (i.e. not provisioned by PerfKit Benchmarker) machine is ssh'able  The user PerfKitBenchmarker will login as has 'sudo' access.  Next, you will want to create a YAML user config file describing how to connect to the machine as follows:  static_vms:\n  -  vm1 # Using the   character creates an anchor that we can\n         # reference later by using the same name and a * character.\n    ip_address: 170.200.60.23\n    user_name: voellm\n    ssh_private_key: /home/voellm/perfkitkeys/my_key_file.pem\n    zone: Siberia\n    disk_specs:\n      - mount_point: /data_dir   The  ip_address  is the address where you want benchmarks to run.  ssh_private_key  is where to find the private ssh key.  zone  can be anything you want.  It is used when publishing results.  disk_specs  is used by all benchmarks which use disk (i.e.,  fio ,  bonnie++ , many others).   In the same file, configure any number of benchmarks (in this case just iperf),\nand reference the static VM as follows:  iperf:\n  vm_groups:\n    vm_1:\n      static_vms:\n        - *vm1  I called my file  iperf.yaml  and used it to run iperf from Siberia to a GCP VM in us-central1-f as follows:  python pkb.py --benchmarks=iperf --machine_type=f1-micro \\\n              --benchmark_config_file=iperf.yaml --zone=us-central1-f \\\n              --ip_addresses=EXTERNAL   ip_addresses=EXTERNAL  tells PerfKit Benchmarker not to use 10.X (ie Internal) machine addresses that all Cloud VMs have.  Just use the external IP address.   If a benchmark requires two machines like iperf, you can have two machines in the same YAML file as shown below.  This means you can indeed run between two machines and never provision any VMs in the Cloud.  static_vms:\n  -  vm1\n    ip_address:  ip1 \n    user_name: connormccoy\n    ssh_private_key: /home/connormccoy/.ssh/google_compute_engine\n    internal_ip: 10.240.223.37\n    install_packages: false\n  -  vm2\n    ip_address:  ip2 \n    user_name: connormccoy\n    ssh_private_key: /home/connormccoy/.ssh/google_compute_engine\n    internal_ip: 10.240.234.189\n    ssh_port: 2222\n\niperf:\n  vm_groups:\n    vm_1:\n      static_vms:\n        - *vm2\n    vm_2:\n      static_vms:\n        - *vm1", 
+            "title": "How To Run Benchmarks Without Cloud Provisioning (e.g., local workstation)"
+        }, 
+        {
+            "location": "/documentation/providers/image-prereqs-docker-based-clouds/", 
+            "text": "Image prerequisites for Docker based clouds\n\n\nDocker Image requirements\n\n\nDocker instances by default don't allow to SSH into them. Thus it is important\nto configure your Docker image so that it has SSH server installed. You can use\nyour own image or build a new one based on a Dockerfile placed in\n\ntools/docker_images\n directory - in this case please refer to\n\nDocker images document\n.", 
+            "title": "Configuring Docker-based Cloud Provider"
+        }, 
+        {
+            "location": "/documentation/providers/image-prereqs-docker-based-clouds/#image-prerequisites-for-docker-based-clouds", 
+            "text": "", 
+            "title": "Image prerequisites for Docker based clouds"
+        }, 
+        {
+            "location": "/documentation/providers/image-prereqs-docker-based-clouds/#docker-image-requirements", 
+            "text": "Docker instances by default don't allow to SSH into them. Thus it is important\nto configure your Docker image so that it has SSH server installed. You can use\nyour own image or build a new one based on a Dockerfile placed in tools/docker_images  directory - in this case please refer to Docker images document .", 
+            "title": "Docker Image requirements"
+        }, 
+        {
+            "location": "/documentation/benchmarks/benchmark-sets/", 
+            "text": "Benchmark Sets\n\n\nStandard Benchmark Set\n\n\n\n\nRunning the Standard Benchmark Set\n\n\nRun without the \n--benchmarks\n parameter and every benchmark in the standard set\nwill run serially which can take a couple of hours (alternatively, run with\n\n--benchmarks=\"standard_set\"\n).  Additionally, if you don't specify\n\n--cloud=...\n, all benchmarks will run on the Google Cloud Platform.\n\n\nNamed Benchmark Sets\n\n\n\n\nNamed sets are are groupings of one or more benchmarks in the benchmarking\ndirectory. This feature allows parallel innovation of what is important to\nmeasure in the Cloud, and is defined by the set owner. For example the GoogleSet\nis maintained by Google, whereas the StanfordSet is managed by Stanford.\n\n\nOnce a quarter a meeting is held to review all the sets to determine what\nbenchmarks should be promoted to the \nstandard_set\n. The Standard Set is also\nreviewed to see if anything should be removed.\n\n\nRunning a Named Benchmark Set\n\n\nTo run all benchmarks in a named set, specify the set name in the benchmarks\nparameter (e.g., \n--benchmarks=\"standard_set\"\n). Sets can be combined with\nindividual benchmarks or other named sets.", 
+            "title": "Benchmark Sets"
+        }, 
+        {
+            "location": "/documentation/benchmarks/benchmark-sets/#benchmark-sets", 
+            "text": "", 
+            "title": "Benchmark Sets"
+        }, 
+        {
+            "location": "/documentation/benchmarks/benchmark-sets/#standard-benchmark-set", 
+            "text": "", 
+            "title": "Standard Benchmark Set"
+        }, 
+        {
+            "location": "/documentation/benchmarks/benchmark-sets/#running-the-standard-benchmark-set", 
+            "text": "Run without the  --benchmarks  parameter and every benchmark in the standard set\nwill run serially which can take a couple of hours (alternatively, run with --benchmarks=\"standard_set\" ).  Additionally, if you don't specify --cloud=... , all benchmarks will run on the Google Cloud Platform.", 
+            "title": "Running the Standard Benchmark Set"
+        }, 
+        {
+            "location": "/documentation/benchmarks/benchmark-sets/#named-benchmark-sets", 
+            "text": "Named sets are are groupings of one or more benchmarks in the benchmarking\ndirectory. This feature allows parallel innovation of what is important to\nmeasure in the Cloud, and is defined by the set owner. For example the GoogleSet\nis maintained by Google, whereas the StanfordSet is managed by Stanford.  Once a quarter a meeting is held to review all the sets to determine what\nbenchmarks should be promoted to the  standard_set . The Standard Set is also\nreviewed to see if anything should be removed.", 
+            "title": "Named Benchmark Sets"
+        }, 
+        {
+            "location": "/documentation/benchmarks/benchmark-sets/#running-a-named-benchmark-set", 
+            "text": "To run all benchmarks in a named set, specify the set name in the benchmarks\nparameter (e.g.,  --benchmarks=\"standard_set\" ). Sets can be combined with\nindividual benchmarks or other named sets.", 
+            "title": "Running a Named Benchmark Set"
+        }, 
+        {
+            "location": "/documentation/benchmarks/object-storage/", 
+            "text": "Object Storage Benchmark\n\n\nCreate and Configure a .boto file for object storage benchmarks\n\n\n\n\nIn order to run object storage benchmark tests, you need to have a properly configured \n~/.boto\n file.\n\n\nHere is how:\n\n\n\n\nCreate the \n~/.boto\n file (If you already have ~/.boto, you can skip this step. Consider making a backup copy of your existing .boto file.)\n\n\n\n\nTo create a new \n~/.boto\n file, issue the following command and follow the instructions given by this command:\n\n\n  gsutil config\n\n\n\n\nAs a result, a \n.boto\n file is created under your home directory.\n\n\n\n\nOpen the \n.boto\n file and edit the following fields:\n\n\nIn the [Credentials] section:\n\n\n\n\ngs_oauth2_refresh_token\n: set it to be the same as the \nrefresh_token\n field in your gcloud credential file (~/.config/gcloud/credentials), which was setup as part of the \ngcloud auth login\n step.\n\n\naws_access_key_id\n, \naws_secret_access_key\n: set these to be the AWS access keys you intend to use for these tests, or you can use the same keys as those in your existing AWS credentials file (\n~/.aws/credentials\n).\n\n\n\n\nIn the \n[GSUtil]\n section:\n\n\n\n\ndefault_project_id\n: if it is not already set, set it to be the google cloud storage project ID you intend to use for this test. (If you used \ngsutil config\n to generate the \n.boto\n file, you should have been prompted to supply this information at this step).\n\n\n\n\nIn the [OAuth2] section:\n\nclient_id\n, \nclient_secret\n: set these to be the same as those in your gcloud credentials file (\n~/.config/gcloud/credentials\n), which was setup as part of the 'gcloud auth login' step.", 
+            "title": "Configuring Object Storage Benchmark"
+        }, 
+        {
+            "location": "/documentation/benchmarks/object-storage/#object-storage-benchmark", 
+            "text": "", 
+            "title": "Object Storage Benchmark"
+        }, 
+        {
+            "location": "/documentation/benchmarks/object-storage/#create-and-configure-a-boto-file-for-object-storage-benchmarks", 
+            "text": "In order to run object storage benchmark tests, you need to have a properly configured  ~/.boto  file.  Here is how:   Create the  ~/.boto  file (If you already have ~/.boto, you can skip this step. Consider making a backup copy of your existing .boto file.)   To create a new  ~/.boto  file, issue the following command and follow the instructions given by this command:    gsutil config  As a result, a  .boto  file is created under your home directory.   Open the  .boto  file and edit the following fields:  In the [Credentials] section:   gs_oauth2_refresh_token : set it to be the same as the  refresh_token  field in your gcloud credential file (~/.config/gcloud/credentials), which was setup as part of the  gcloud auth login  step.  aws_access_key_id ,  aws_secret_access_key : set these to be the AWS access keys you intend to use for these tests, or you can use the same keys as those in your existing AWS credentials file ( ~/.aws/credentials ).   In the  [GSUtil]  section:   default_project_id : if it is not already set, set it to be the google cloud storage project ID you intend to use for this test. (If you used  gsutil config  to generate the  .boto  file, you should have been prompted to supply this information at this step).   In the [OAuth2] section: client_id ,  client_secret : set these to be the same as those in your gcloud credentials file ( ~/.config/gcloud/credentials ), which was setup as part of the 'gcloud auth login' step.", 
+            "title": "Create and Configure a .boto file for object storage benchmarks"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/", 
+            "text": "Linux Benchmarks\n\n\nSystem\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nCluster Boot\n\n\ncluster_boot\n\n\nRecords the time required to boot a cluster of VMs.\n\n\n\n\n\n\nUnixBench\n\n\nunixbench\n\n\nUnix bench is a holistic performance benchmark, measuing CPU performance,some memory bandwidth, and disk.\n\n\n\n\n\n\n\n\nCPU\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nSPEC CPU2006\n\n\nspeccpu2006\n\n\nThe SPEC CPU 2006 benchmark is SPEC's next-generation, industry-standardized, CPU-intensive benchmark suite, stressing a system's processor, memory subsystem and compiler.\n\n\n\n\n\n\nCOREMARK\n\n\ncoremark\n\n\nCoreMark's primary goals are simplicity and providing a method for benchmarking only a processor's core features.\n\n\n\n\n\n\nScimark2\n\n\nscimark2\n\n\nSciMark2 is a Java (and C) benchmark for scientific and numerical computing. It measures several computational kernels and reports a composite score in approximate Mflops (Millions of floating point operations per second).\n\n\n\n\n\n\n\n\nMemory\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nMultiChase\n\n\nmultichase\n\n\npointer chaser benchmark. It measures the average latency of pointer-chase operations.\n\n\n\n\n\n\nSILO\n\n\nsilo\n\n\nSilo is a high performance, scalable in-memory database for modern multicore machines.\n\n\n\n\n\n\n\n\nStorage\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nSPEC SFS2014\n\n\nspecsfs2014\n\n\nThe SPEC SFS\u00ae 2014 benchmark is the latest version of the Standard Performance Evaluation Corporation benchmark suite measuring file server throughput and response time, providing a standardized method for comparing performance across different vendor platforms.\n\n\n\n\n\n\nBlock Storage\n\n\nblock_storage_workloads\n\n\nRuns fio benchmarks to simulate logging, database and streaming.\n\n\n\n\n\n\nFlexible I/O\n\n\nfio\n\n\nRun fio benchmarks\n\n\n\n\n\n\nCopy Throughput\n\n\ncopy_throughput\n\n\ncp and dd between two attached disks on same vm. scp copy across different vms using external networks.\n\n\n\n\n\n\n\n\nNetwork\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nMesh Network\n\n\nmesh_network\n\n\nRuns TCP_RR, TCP_STREAM benchmarks from netperf and compute total throughput and average latency inside mesh network.\n\n\n\n\n\n\nIperf\n\n\niperf\n\n\nRuns Iperf to collect network throughput.\n\n\n\n\n\n\nNetPerf\n\n\nnetperf\n\n\nRuns TCP_RR, TCP_CRR, and TCP_STREAM benchmarks from netperf across two machines.\n\n\n\n\n\n\nping\n\n\nping\n\n\nRuns ping using the internal IP addresses of VMs in the same zone.\n\n\n\n\n\n\n\n\nWeb Workloads\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nOLDISIM\n\n\noldisim\n\n\noldisim is a framework to support benchmarks that emulate Online Data-Intensive (OLDI) workloads, such as web search and social networking. oldisim includes sample workloads built on top of this framework.\n\n\n\n\n\n\nTomcat / Wrk\n\n\ntomcat_wrk\n\n\nRun wrk against a simple Tomcat web server.\n\n\n\n\n\n\n\n\nEFPL CloudSuite\n\n\nFor more info see: \nCloudSuite Benchmarks\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nData Caching\n\n\ncloudsuite_data_caching\n\n\nRuns the Data Caching benchmark.\n\n\n\n\n\n\nData Serving\n\n\ncloudsuite_data_serving\n\n\nRuns the Data Serving benchmark.\n\n\n\n\n\n\nGraph Analytics\n\n\ncloudsuite_graph_analytics\n\n\nRuns the Graph Analytics Benchmark.\n\n\n\n\n\n\nIn-Memory Analytics\n\n\ncloudsuite_in_memory_analytics\n\n\nRuns the In-Memory Analytics benchmark.\n\n\n\n\n\n\nMedia Streaming\n\n\ncloudsuite_media_streaming\n\n\nRuns the media streaming benchmark.\n\n\n\n\n\n\nWeb Search\n\n\ncloudsuite_web_search\n\n\nRuns the web search benchmark.\n\n\n\n\n\n\nWeb Serving\n\n\ncloudsuite_web_serving\n\n\nRuns the web serving benchmark.\n\n\n\n\n\n\n\n\nNoSQL Workloads\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nAerospike\n\n\naerospike_ycsb\n\n\nRuns YCSB against Aerospike.\n\n\n\n\n\n\nCassandra\n\n\ncassandra_ycsb\n\n\nRuns YCSB against Cassandra.\n\n\n\n\n\n\nHBase\n\n\nhbase_ycsb\n\n\nRuns YCSB against HBase.\n\n\n\n\n\n\nMongoDB\n\n\nmongodb_ycsb\n\n\nRuns YCSB against MongoDB.\n\n\n\n\n\n\nRedis\n\n\nredis_ycsb\n\n\nRuns YCSB against Redis.\n\n\n\n\n\n\n\n\n[Big] Data\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nHadoop TeraSort\n\n\nhadoop_terasort\n\n\nRuns TeraSort on Hadoop.\n\n\n\n\n\n\nSysbench OLTP\n\n\nsysbench_oltp\n\n\nRuns sysbench --oltp.\n\n\n\n\n\n\n\n\n[Big] Compute\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nHPCC\n\n\nhpcc\n\n\nRuns HPC Challenge benchmarks.\n\n\n\n\n\n\n\n\nServices\n\n\n\n\n\n\n\n\n\n\nBenchmark\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nCloud BigTable\n\n\ncloud_bigtable_ycsb\n\n\nRuns YCSB against Google Cloud BigTable.\n\n\n\n\n\n\nCloud Datastore\n\n\ncloud_datastore_ycsb\n\n\nRuns YCSB against Google Cloud Datastore.\n\n\n\n\n\n\nObject Storage\n\n\nobject_storage_service\n\n\nObject Storage benchmarks.\n\n\n\n\n\n\nMySQL Service\n\n\nmysql_service\n\n\nThis is a set of benchmarks that measures performance of MySQL Databases on managed MySQL services.", 
+            "title": "Linux Benchmarks"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#linux-benchmarks", 
+            "text": "", 
+            "title": "Linux Benchmarks"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#system", 
+            "text": "Benchmark  Name  Description      Cluster Boot  cluster_boot  Records the time required to boot a cluster of VMs.    UnixBench  unixbench  Unix bench is a holistic performance benchmark, measuing CPU performance,some memory bandwidth, and disk.", 
+            "title": "System"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#cpu", 
+            "text": "Benchmark  Name  Description      SPEC CPU2006  speccpu2006  The SPEC CPU 2006 benchmark is SPEC's next-generation, industry-standardized, CPU-intensive benchmark suite, stressing a system's processor, memory subsystem and compiler.    COREMARK  coremark  CoreMark's primary goals are simplicity and providing a method for benchmarking only a processor's core features.    Scimark2  scimark2  SciMark2 is a Java (and C) benchmark for scientific and numerical computing. It measures several computational kernels and reports a composite score in approximate Mflops (Millions of floating point operations per second).", 
+            "title": "CPU"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#memory", 
+            "text": "Benchmark  Name  Description      MultiChase  multichase  pointer chaser benchmark. It measures the average latency of pointer-chase operations.    SILO  silo  Silo is a high performance, scalable in-memory database for modern multicore machines.", 
+            "title": "Memory"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#storage", 
+            "text": "Benchmark  Name  Description      SPEC SFS2014  specsfs2014  The SPEC SFS\u00ae 2014 benchmark is the latest version of the Standard Performance Evaluation Corporation benchmark suite measuring file server throughput and response time, providing a standardized method for comparing performance across different vendor platforms.    Block Storage  block_storage_workloads  Runs fio benchmarks to simulate logging, database and streaming.    Flexible I/O  fio  Run fio benchmarks    Copy Throughput  copy_throughput  cp and dd between two attached disks on same vm. scp copy across different vms using external networks.", 
+            "title": "Storage"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#network", 
+            "text": "Benchmark  Name  Description      Mesh Network  mesh_network  Runs TCP_RR, TCP_STREAM benchmarks from netperf and compute total throughput and average latency inside mesh network.    Iperf  iperf  Runs Iperf to collect network throughput.    NetPerf  netperf  Runs TCP_RR, TCP_CRR, and TCP_STREAM benchmarks from netperf across two machines.    ping  ping  Runs ping using the internal IP addresses of VMs in the same zone.", 
+            "title": "Network"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#web-workloads", 
+            "text": "Benchmark  Name  Description      OLDISIM  oldisim  oldisim is a framework to support benchmarks that emulate Online Data-Intensive (OLDI) workloads, such as web search and social networking. oldisim includes sample workloads built on top of this framework.    Tomcat / Wrk  tomcat_wrk  Run wrk against a simple Tomcat web server.", 
+            "title": "Web Workloads"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#efpl-cloudsuite", 
+            "text": "For more info see:  CloudSuite Benchmarks     Benchmark  Name  Description      Data Caching  cloudsuite_data_caching  Runs the Data Caching benchmark.    Data Serving  cloudsuite_data_serving  Runs the Data Serving benchmark.    Graph Analytics  cloudsuite_graph_analytics  Runs the Graph Analytics Benchmark.    In-Memory Analytics  cloudsuite_in_memory_analytics  Runs the In-Memory Analytics benchmark.    Media Streaming  cloudsuite_media_streaming  Runs the media streaming benchmark.    Web Search  cloudsuite_web_search  Runs the web search benchmark.    Web Serving  cloudsuite_web_serving  Runs the web serving benchmark.", 
+            "title": "EFPL CloudSuite"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#nosql-workloads", 
+            "text": "Benchmark  Name  Description      Aerospike  aerospike_ycsb  Runs YCSB against Aerospike.    Cassandra  cassandra_ycsb  Runs YCSB against Cassandra.    HBase  hbase_ycsb  Runs YCSB against HBase.    MongoDB  mongodb_ycsb  Runs YCSB against MongoDB.    Redis  redis_ycsb  Runs YCSB against Redis.", 
+            "title": "NoSQL Workloads"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#big-data", 
+            "text": "Benchmark  Name  Description      Hadoop TeraSort  hadoop_terasort  Runs TeraSort on Hadoop.    Sysbench OLTP  sysbench_oltp  Runs sysbench --oltp.", 
+            "title": "[Big] Data"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#big-compute", 
+            "text": "Benchmark  Name  Description      HPCC  hpcc  Runs HPC Challenge benchmarks.", 
+            "title": "[Big] Compute"
+        }, 
+        {
+            "location": "/documentation/benchmarks/linux-benchmarks/#services", 
+            "text": "Benchmark  Name  Description      Cloud BigTable  cloud_bigtable_ycsb  Runs YCSB against Google Cloud BigTable.    Cloud Datastore  cloud_datastore_ycsb  Runs YCSB against Google Cloud Datastore.    Object Storage  object_storage_service  Object Storage benchmarks.    MySQL Service  mysql_service  This is a set of benchmarks that measures performance of MySQL Databases on managed MySQL services.", 
+            "title": "Services"
+        }, 
+        {
+            "location": "/documentation/benchmarks/windows-benchmarks/", 
+            "text": "Running Windows Benchmarks\n\n\nYou must be running on a Windows machine in order to run Windows benchmarks.\nInstall all dependencies as above and set TrustedHosts to accept all hosts so\nthat you can open PowerShell sessions with the VMs (both machines having each\nother in their TrustedHosts list is neccessary, but not sufficient to issue\nremote commands; valid credentials are still required):\n\n\nset-item wsman:\\localhost\\Client\\TrustedHosts -value *\n\n\n\n\nNow you can run Windows benchmarks by running with \n--os_type=windows\n. Windows has a\ndifferent set of benchmarks than Linux does. They can be found under\nperfkitbenchmarker/windows_benchmarks/. The target VM OS is Windows Server 2012\nR2.", 
+            "title": "Windows Benchmarks"
+        }, 
+        {
+            "location": "/documentation/benchmarks/windows-benchmarks/#running-windows-benchmarks", 
+            "text": "You must be running on a Windows machine in order to run Windows benchmarks.\nInstall all dependencies as above and set TrustedHosts to accept all hosts so\nthat you can open PowerShell sessions with the VMs (both machines having each\nother in their TrustedHosts list is neccessary, but not sufficient to issue\nremote commands; valid credentials are still required):  set-item wsman:\\localhost\\Client\\TrustedHosts -value *  Now you can run Windows benchmarks by running with  --os_type=windows . Windows has a\ndifferent set of benchmarks than Linux does. They can be found under\nperfkitbenchmarker/windows_benchmarks/. The target VM OS is Windows Server 2012\nR2.", 
+            "title": "Running Windows Benchmarks"
+        }, 
+        {
+            "location": "/documentation/benchmarks/juju/", 
+            "text": "Juju\n\n\nRunning Benchmarks with Juju\n\n\nJuju\n is a service orchestration tool that enables you\nto quickly model, configure, deploy and manage entire cloud environments.\nSupported benchmarks will deploy a Juju-modeled service automatically, with no\nextra user configuration required, by specifying the \n--os_type=juju\n flag.\n\n\nExample\n\n\n  python pkb.py --cloud=AWS --os_type=juju --benchmarks=cassandra_stress\n\n\n\n\nBenchmark support\n\n\n\n\nBenchmark/Package authors need to implement the \nJujuInstall()\n method inside\ntheir package. This method deploys, configures, and relates the services to be\nbenchmarked. Please note that other software installation and configuration\nshould be bypassed when \nFLAGS.os_type == JUJU\n. See \nperfkitbenchmarker/linux_packages/cassandra.py\n for an example implementation.", 
+            "title": "Juju Support"
+        }, 
+        {
+            "location": "/documentation/benchmarks/juju/#juju", 
+            "text": "", 
+            "title": "Juju"
+        }, 
+        {
+            "location": "/documentation/benchmarks/juju/#running-benchmarks-with-juju", 
+            "text": "Juju  is a service orchestration tool that enables you\nto quickly model, configure, deploy and manage entire cloud environments.\nSupported benchmarks will deploy a Juju-modeled service automatically, with no\nextra user configuration required, by specifying the  --os_type=juju  flag.", 
+            "title": "Running Benchmarks with Juju"
+        }, 
+        {
+            "location": "/documentation/benchmarks/juju/#example", 
+            "text": "python pkb.py --cloud=AWS --os_type=juju --benchmarks=cassandra_stress", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/documentation/benchmarks/juju/#benchmark-support", 
+            "text": "Benchmark/Package authors need to implement the  JujuInstall()  method inside\ntheir package. This method deploys, configures, and relates the services to be\nbenchmarked. Please note that other software installation and configuration\nshould be bypassed when  FLAGS.os_type == JUJU . See  perfkitbenchmarker/linux_packages/cassandra.py  for an example implementation.", 
+            "title": "Benchmark support"
+        }, 
+        {
+            "location": "/documentation/configurations/", 
+            "text": "Configuring PerfKit Benchmarker\n\n\nOverview\n\n\n\n\nA configuration describes the resources necessary to run a benchmark as well as the options that should be used while running it. Benchmarks have default configurations which determine how they will run if users don't specify any options. Users can override the default configuration settings by providing a configuration file or by using command line flags. In addition, configurations provide a means to run with static (i.e. pre-provisioned) machines and to run multiple copies of the same benchmark in a single PKB invocation.\n\n\nStructure of a Configuration File\n\n\n\n\nConfiguration files are written in \nYAML\n, and are for the most part just nested dictionaries. At each level of the configuration, there are a set of keys which are allowed:\n\n\n\n\nValid top level keys:\n\n\nbenchmarks\n: A YAML array of dictionaries mapping benchmark names to their\n  configs. This also determines which benchmarks to run.\n\n\n*any_benchmark_name*\n: If the \nbenchmarks\n key is not specified, then\n  specifying a benchmark name mapped to a config will override\n  that benchmark's default configuration in the event that that\n  benchmark is run.\n\n\nAny keys not listed above are allowed, but will not affect PKB.\n\n\n\n\n\n\nValid config keys:\n\n\nvm_groups\n: A YAML dictionary mapping the names of VM groups to the groups\n  themselves. These names can be any string.\n\n\ndescription\n: A description of the benchmark.\n\n\nflags\n: A YAML dictionary with overrides for default flag values.\n\n\n\n\n\n\nValid VM group keys:\n\n\nvm_spec\n: A YAML dictionary mapping names of clouds (e.g. AWS) to the\n  actual VM spec.\n\n\ndisk_spec\n: A YAML dictionary mapping names of clouds to the actual\n  disk spec.\n\n\nvm_count\n: The number of VMs to create in this group. If this key isn't\n  specified, it defaults to 1.\n\n\ndisk_count\n: The number of disks to attach to VMs of this group. If this key\n  isn't specified, it defaults to 1.\n\n\ncloud\n: The name of the cloud to create the group in. This is used for\n  multi-cloud configurations.\n\n\nos_type\n: The OS type of the VMs to create (see the flag of the same name for\n  more information). This is used if you want to run a benchmark using VMs\n  with different OS types (e.g. Debian and RHEL).\n\n\nstatic_vms\n: A YAML array of Static VM specs. These VMs will be used before\n  any Cloud VMs are created. The total number of VMs will still add up to\n  the number specified by the \nvm_count\n key.\n\n\n\n\n\n\nFor valid VM spec keys, see \nvirtual_machine.BaseVmSpec\n and derived classes.\n\n\nFor valid disk spec keys, see \ndisk.BaseDiskSpec\n and derived classes.\n\n\n\n\nSpecifying Configurations and Precedence Rules\n\n\n\n\nThe most basic way to specify a configuration is to use the \n--benchmark_config_file\n command line flag. Anything specified in the file will override the default configuration. Here is an example showing how to change the number of VMs created in the \ncluster_boot\n benchmark:\n\n\n./pkb.py --benchmark_config_file=cluster_boot.yml --benchmarks=cluster_boot\n\n\n\n\n[cluster_boot.yml]\n\n\ncluster_boot:\n  vm_groups:\n    default:\n      vm_count: 10\n\n\n\n\nA second flag, \n--config_override\n will directly override the config file. It can be specified multiple times. Since it overrides the config file, any settings supplied via this flag have a higher priority than those supplied via the \n--benchmark_config_file\n flag. Here is an example performing the same change to the default \ncluster_boot\n configuration as above:\n\n\n./pkb.py --config_override=\ncluster_boot.vm_groups.default.vm_count=10\n --benchmarks=cluster_boot\n\n\n\n\nFinally, any other flags which the user specifies on the command line have the highest priority. For example, specifying the \n--machine_type\n flag will cause all VM groups to use that machine type, regardless of any other settings.\n\n\nResult Metadata\n\n\n\n\nResult metadata has been slightly modified as part of the configuration change (unless the VM group's name is 'default', in which case there is no change).\nThe metadata created by the \nDefaultMetadataProvider\n is now prefixed by the VM group name. For example, if a VM group's name is 'workers', then all samples will contain \nworkers_machine_type\n, \nworkers_cloud\n, and \nworkers_zone\n metadata. This change was made to enable benchmarks with heterogeneous VM groups.\n\n\nExamples\n\n\n\n\nCross-Cloud \nnetperf\n\n\nnetperf:\n  vm_groups:\n    vm_1:\n      cloud: AWS\n    vm_2:\n      cloud: GCP\n\n\n\n\nMultiple \niperf\n runs\n\n\nRun \niperf\n under the default configuration, once with a single client thread, once with 8:\n\n\nbenchmarks:\n  - iperf:\n      flags:\n        iperf_sending_thread_count: 1\n  - iperf:\n      flags:\n        iperf_sending_thread_count: 8\n\n\n\n\nfio\n with Static VMs\n\n\nTesting against a mounted filesystem (under \n/scratch\n) for \nvm1\n, and against the disk directly (\n/dev/sdb\n) for \nvm2\n.\n\n\nmy_static_vms:  # Any key is accepted here.\n  - \nvm1\n    user_name: perfkit\n    ssh_private_key: /absolute/path/to/key\n    ip_address: 1.1.1.1\n    disk_specs:\n      - mount_point: /scratch\n  - \nvm2\n    user_name: perfkit\n    ssh_private_key: /absolute/path/to/key\n    ip_address: 2.2.2.2\n    disk_specs:\n      - device_path: /dev/sdb\n\nbenchmarks:\n  - fio: {vm_groups: {default: {static_vms: [*vm1]}},\n          flags: {against_device: False}}\n  - fio: {vm_groups: {default: {static_vms: [*vm2]}},\n          flags: {against_device: True}}\n\n\n\n\nCross region \niperf\n\n\niperf:\n  vm_groups:\n    vm_1:\n      cloud: GCP\n      vm_spec:\n        GCP:\n          zone: us-central1-b\n    vm_2:\n      cloud: GCP\n      vm_spec:\n        GCP:\n          zone: europe-west1-d\n\n\n\n\nfio\n using Local SSDs\n\n\nfio:\n  vm_groups:\n    default:\n      cloud: AWS\n      vm_spec:\n        AWS:\n          machine_type: i2.2xlarge\n      disk_spec:\n        AWS:\n          disk_type: local\n          num_striped_disks: 2\n\n\n\n\nConfigurations and Configuration Overrides\n\n\n\n\nEach benchmark as an independent configuration which is written in YAML.\nUsers may override this default configuration by providing a configuration.\nThis allows for much more complex setups than previously possible,\nincluding running benchmarks across clouds.\n\n\nA benchmark configuration has a somewhat simple structure. It is essentially\njust a series of nested dictionaries. At the top level, it contains VM groups.\nVM groups are logical groups of homogeneous machines. The VM groups hold both a\n\nvm_spec\n and a \ndisk_spec\n which contain the parameters needed to\ncreate members of that group. Here is an example of an expanded configuration:\n\n\nhbase_ycsb:\n  vm_groups:\n    loaders:\n      vm_count: 4\n      vm_spec:\n        GCP:\n          machine_type: n1-standard-1\n          image: ubuntu-14-04\n          zone: us-central1-c\n        AWS:\n          machine_type: m3.medium\n          image: ami-######\n          zone: us-east-1a\n        # Other clouds here...\n      # This specifies the cloud to use for the group. This allows for\n      # benchmark configurations that span clouds.\n      cloud: AWS\n      # No disk_spec here since these are loaders.\n    master:\n      vm_count: 1\n      cloud: GCP\n      vm_spec:\n        GCP:\n          machine_type:\n            cpus: 2\n            memory: 10.0GiB\n          image: ubuntu-14-04\n          zone: us-central1-c\n        # Other clouds here...\n      disk_count: 1\n      disk_spec:\n        GCP:\n          disk_size: 100\n          disk_type: standard\n          mount_point: /scratch\n        # Other clouds here...\n    workers:\n      vm_count: 4\n      cloud: GCP\n      vm_spec:\n        GCP:\n          machine_type: n1-standard-4\n          image: ubuntu-14-04\n          zone: us-central1-c\n        # Other clouds here...\n      disk_count: 1\n      disk_spec:\n        GCP:\n          disk_size: 500\n          disk_type: remote_ssd\n          mount_point: /scratch\n        # Other clouds here...\n\n\n\n\nFor a complete list of keys for \nvm_spec\ns and \ndisk_spec\ns see\n\nvirtual_machine.BaseVmSpec\n\nand\n\ndisk.BaseDiskSpec\n\nand their derived classes.\n\n\nUser configs are applied on top of the existing default config and can be\nspecified in two ways. The first is by supplying a config file via the\n\n--benchmark_config_file\n flag. The second is by specifying a single setting to\noverride via the \n--config_override\n flag.\n\n\nA user config file only needs to specify the settings which it is intended to\noverride. For example if the only thing you want to do is change the number of\nVMs for the \ncluster_boot\n benchmark, this config is sufficient:\n\n\ncluster_boot:\n  vm_groups:\n    default:\n      vm_count: 100\n\n\n\n\nYou can achieve the same effect by specifying the \n--config_override\n flag.\nThe value of the flag should be a path within the YAML (with keys delimited by\nperiods), an equals sign, and finally the new value:\n\n\n--config_override=cluster_boot.vm_groups.default.vm_count=100\n\n\n\n\nSee the section below for how to use static (i.e. pre-provisioned) machines in your config.\n\n\nSpecifying Flags in Configuration Files\n\n\n\n\nYou can now specify flags in configuration files by using the \nflags\n key at the\ntop level in a benchmark config. The expected value is a dictionary mapping\nflag names to their new default values. The flags are only defaults; it's still\npossible to override them via the command line. It's even possible to specify\nconflicting values of the same flag in different benchmarks:\n\n\niperf:\n  flags:\n    machine_type: n1-standard-2\n    zone: us-central1-b\n    iperf_sending_thread_count: 2\n\nnetperf:\n  flags:\n    machine_type: n1-standard-8\n\n\n\n\nThe new defaults will only apply to the benchmark in which they are specified.\n\n\nProxy configuration for VM guests.\n\n\n\n\nIf the VM guests do not have direct Internet access in the cloud\nenvironment, you can configure proxy settings through \npkb.py\n flags.\n\n\nTo do that simple setup three flags (All urls are in notation ): The\nflag values use the same \nprotocol\n://\nserver\n:\nport\n syntax as the\ncorresponding environment variables, for example\n\n--http_proxy=http://proxy.example.com:8080\n .\n\n\n\n\n\n\n\n\nFlag\n\n\nNotes\n\n\n\n\n\n\n\n\n\n\n--http_proxy\n\n\nNeeded for package manager on Guest OS and for some Perfkit packages\n\n\n\n\n\n\n--https_proxy\n\n\nNeeded for package manager or Ubuntu guest and for from github downloaded packages\n\n\n\n\n\n\n--ftp_proxy\n\n\nNeeded for some Perfkit packages", 
+            "title": "Configurations"
+        }, 
+        {
+            "location": "/documentation/configurations/#configuring-perfkit-benchmarker", 
+            "text": "", 
+            "title": "Configuring PerfKit Benchmarker"
+        }, 
+        {
+            "location": "/documentation/configurations/#overview", 
+            "text": "A configuration describes the resources necessary to run a benchmark as well as the options that should be used while running it. Benchmarks have default configurations which determine how they will run if users don't specify any options. Users can override the default configuration settings by providing a configuration file or by using command line flags. In addition, configurations provide a means to run with static (i.e. pre-provisioned) machines and to run multiple copies of the same benchmark in a single PKB invocation.", 
+            "title": "Overview"
+        }, 
+        {
+            "location": "/documentation/configurations/#structure-of-a-configuration-file", 
+            "text": "Configuration files are written in  YAML , and are for the most part just nested dictionaries. At each level of the configuration, there are a set of keys which are allowed:   Valid top level keys:  benchmarks : A YAML array of dictionaries mapping benchmark names to their\n  configs. This also determines which benchmarks to run.  *any_benchmark_name* : If the  benchmarks  key is not specified, then\n  specifying a benchmark name mapped to a config will override\n  that benchmark's default configuration in the event that that\n  benchmark is run.  Any keys not listed above are allowed, but will not affect PKB.    Valid config keys:  vm_groups : A YAML dictionary mapping the names of VM groups to the groups\n  themselves. These names can be any string.  description : A description of the benchmark.  flags : A YAML dictionary with overrides for default flag values.    Valid VM group keys:  vm_spec : A YAML dictionary mapping names of clouds (e.g. AWS) to the\n  actual VM spec.  disk_spec : A YAML dictionary mapping names of clouds to the actual\n  disk spec.  vm_count : The number of VMs to create in this group. If this key isn't\n  specified, it defaults to 1.  disk_count : The number of disks to attach to VMs of this group. If this key\n  isn't specified, it defaults to 1.  cloud : The name of the cloud to create the group in. This is used for\n  multi-cloud configurations.  os_type : The OS type of the VMs to create (see the flag of the same name for\n  more information). This is used if you want to run a benchmark using VMs\n  with different OS types (e.g. Debian and RHEL).  static_vms : A YAML array of Static VM specs. These VMs will be used before\n  any Cloud VMs are created. The total number of VMs will still add up to\n  the number specified by the  vm_count  key.    For valid VM spec keys, see  virtual_machine.BaseVmSpec  and derived classes.  For valid disk spec keys, see  disk.BaseDiskSpec  and derived classes.", 
+            "title": "Structure of a Configuration File"
+        }, 
+        {
+            "location": "/documentation/configurations/#specifying-configurations-and-precedence-rules", 
+            "text": "The most basic way to specify a configuration is to use the  --benchmark_config_file  command line flag. Anything specified in the file will override the default configuration. Here is an example showing how to change the number of VMs created in the  cluster_boot  benchmark:  ./pkb.py --benchmark_config_file=cluster_boot.yml --benchmarks=cluster_boot  [cluster_boot.yml]  cluster_boot:\n  vm_groups:\n    default:\n      vm_count: 10  A second flag,  --config_override  will directly override the config file. It can be specified multiple times. Since it overrides the config file, any settings supplied via this flag have a higher priority than those supplied via the  --benchmark_config_file  flag. Here is an example performing the same change to the default  cluster_boot  configuration as above:  ./pkb.py --config_override= cluster_boot.vm_groups.default.vm_count=10  --benchmarks=cluster_boot  Finally, any other flags which the user specifies on the command line have the highest priority. For example, specifying the  --machine_type  flag will cause all VM groups to use that machine type, regardless of any other settings.", 
+            "title": "Specifying Configurations and Precedence Rules"
+        }, 
+        {
+            "location": "/documentation/configurations/#result-metadata", 
+            "text": "Result metadata has been slightly modified as part of the configuration change (unless the VM group's name is 'default', in which case there is no change).\nThe metadata created by the  DefaultMetadataProvider  is now prefixed by the VM group name. For example, if a VM group's name is 'workers', then all samples will contain  workers_machine_type ,  workers_cloud , and  workers_zone  metadata. This change was made to enable benchmarks with heterogeneous VM groups.", 
+            "title": "Result Metadata"
+        }, 
+        {
+            "location": "/documentation/configurations/#examples", 
+            "text": "", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/documentation/configurations/#cross-cloud-netperf", 
+            "text": "netperf:\n  vm_groups:\n    vm_1:\n      cloud: AWS\n    vm_2:\n      cloud: GCP", 
+            "title": "Cross-Cloud netperf"
+        }, 
+        {
+            "location": "/documentation/configurations/#multiple-iperf-runs", 
+            "text": "Run  iperf  under the default configuration, once with a single client thread, once with 8:  benchmarks:\n  - iperf:\n      flags:\n        iperf_sending_thread_count: 1\n  - iperf:\n      flags:\n        iperf_sending_thread_count: 8", 
+            "title": "Multiple iperf runs"
+        }, 
+        {
+            "location": "/documentation/configurations/#fio-with-static-vms", 
+            "text": "Testing against a mounted filesystem (under  /scratch ) for  vm1 , and against the disk directly ( /dev/sdb ) for  vm2 .  my_static_vms:  # Any key is accepted here.\n  -  vm1\n    user_name: perfkit\n    ssh_private_key: /absolute/path/to/key\n    ip_address: 1.1.1.1\n    disk_specs:\n      - mount_point: /scratch\n  -  vm2\n    user_name: perfkit\n    ssh_private_key: /absolute/path/to/key\n    ip_address: 2.2.2.2\n    disk_specs:\n      - device_path: /dev/sdb\n\nbenchmarks:\n  - fio: {vm_groups: {default: {static_vms: [*vm1]}},\n          flags: {against_device: False}}\n  - fio: {vm_groups: {default: {static_vms: [*vm2]}},\n          flags: {against_device: True}}", 
+            "title": "fio with Static VMs"
+        }, 
+        {
+            "location": "/documentation/configurations/#cross-region-iperf", 
+            "text": "iperf:\n  vm_groups:\n    vm_1:\n      cloud: GCP\n      vm_spec:\n        GCP:\n          zone: us-central1-b\n    vm_2:\n      cloud: GCP\n      vm_spec:\n        GCP:\n          zone: europe-west1-d", 
+            "title": "Cross region iperf"
+        }, 
+        {
+            "location": "/documentation/configurations/#fio-using-local-ssds", 
+            "text": "fio:\n  vm_groups:\n    default:\n      cloud: AWS\n      vm_spec:\n        AWS:\n          machine_type: i2.2xlarge\n      disk_spec:\n        AWS:\n          disk_type: local\n          num_striped_disks: 2", 
+            "title": "fio using Local SSDs"
+        }, 
+        {
+            "location": "/documentation/configurations/#configurations-and-configuration-overrides", 
+            "text": "Each benchmark as an independent configuration which is written in YAML.\nUsers may override this default configuration by providing a configuration.\nThis allows for much more complex setups than previously possible,\nincluding running benchmarks across clouds.  A benchmark configuration has a somewhat simple structure. It is essentially\njust a series of nested dictionaries. At the top level, it contains VM groups.\nVM groups are logical groups of homogeneous machines. The VM groups hold both a vm_spec  and a  disk_spec  which contain the parameters needed to\ncreate members of that group. Here is an example of an expanded configuration:  hbase_ycsb:\n  vm_groups:\n    loaders:\n      vm_count: 4\n      vm_spec:\n        GCP:\n          machine_type: n1-standard-1\n          image: ubuntu-14-04\n          zone: us-central1-c\n        AWS:\n          machine_type: m3.medium\n          image: ami-######\n          zone: us-east-1a\n        # Other clouds here...\n      # This specifies the cloud to use for the group. This allows for\n      # benchmark configurations that span clouds.\n      cloud: AWS\n      # No disk_spec here since these are loaders.\n    master:\n      vm_count: 1\n      cloud: GCP\n      vm_spec:\n        GCP:\n          machine_type:\n            cpus: 2\n            memory: 10.0GiB\n          image: ubuntu-14-04\n          zone: us-central1-c\n        # Other clouds here...\n      disk_count: 1\n      disk_spec:\n        GCP:\n          disk_size: 100\n          disk_type: standard\n          mount_point: /scratch\n        # Other clouds here...\n    workers:\n      vm_count: 4\n      cloud: GCP\n      vm_spec:\n        GCP:\n          machine_type: n1-standard-4\n          image: ubuntu-14-04\n          zone: us-central1-c\n        # Other clouds here...\n      disk_count: 1\n      disk_spec:\n        GCP:\n          disk_size: 500\n          disk_type: remote_ssd\n          mount_point: /scratch\n        # Other clouds here...  For a complete list of keys for  vm_spec s and  disk_spec s see virtual_machine.BaseVmSpec \nand disk.BaseDiskSpec \nand their derived classes.  User configs are applied on top of the existing default config and can be\nspecified in two ways. The first is by supplying a config file via the --benchmark_config_file  flag. The second is by specifying a single setting to\noverride via the  --config_override  flag.  A user config file only needs to specify the settings which it is intended to\noverride. For example if the only thing you want to do is change the number of\nVMs for the  cluster_boot  benchmark, this config is sufficient:  cluster_boot:\n  vm_groups:\n    default:\n      vm_count: 100  You can achieve the same effect by specifying the  --config_override  flag.\nThe value of the flag should be a path within the YAML (with keys delimited by\nperiods), an equals sign, and finally the new value:  --config_override=cluster_boot.vm_groups.default.vm_count=100  See the section below for how to use static (i.e. pre-provisioned) machines in your config.", 
+            "title": "Configurations and Configuration Overrides"
+        }, 
+        {
+            "location": "/documentation/configurations/#specifying-flags-in-configuration-files", 
+            "text": "You can now specify flags in configuration files by using the  flags  key at the\ntop level in a benchmark config. The expected value is a dictionary mapping\nflag names to their new default values. The flags are only defaults; it's still\npossible to override them via the command line. It's even possible to specify\nconflicting values of the same flag in different benchmarks:  iperf:\n  flags:\n    machine_type: n1-standard-2\n    zone: us-central1-b\n    iperf_sending_thread_count: 2\n\nnetperf:\n  flags:\n    machine_type: n1-standard-8  The new defaults will only apply to the benchmark in which they are specified.", 
+            "title": "Specifying Flags in Configuration Files"
+        }, 
+        {
+            "location": "/documentation/configurations/#proxy-configuration-for-vm-guests", 
+            "text": "If the VM guests do not have direct Internet access in the cloud\nenvironment, you can configure proxy settings through  pkb.py  flags.  To do that simple setup three flags (All urls are in notation ): The\nflag values use the same  protocol :// server : port  syntax as the\ncorresponding environment variables, for example --http_proxy=http://proxy.example.com:8080  .     Flag  Notes      --http_proxy  Needed for package manager on Guest OS and for some Perfkit packages    --https_proxy  Needed for package manager or Ubuntu guest and for from github downloaded packages    --ftp_proxy  Needed for some Perfkit packages", 
+            "title": "Proxy configuration for VM guests."
+        }, 
+        {
+            "location": "/community/", 
+            "text": "Community\n\n\nGitHub developers\n\n\n\n\nContributors\n\n\nAcademia\n\n\n\n\n\n\n\n\n\n\nIndustry Partners\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCloud Technology Partners", 
+            "title": "Community"
+        }, 
+        {
+            "location": "/community/#community", 
+            "text": "", 
+            "title": "Community"
+        }, 
+        {
+            "location": "/community/#github-developers", 
+            "text": "Contributors", 
+            "title": "GitHub developers"
+        }, 
+        {
+            "location": "/community/#academia", 
+            "text": "", 
+            "title": "Academia"
+        }, 
+        {
+            "location": "/community/#industry-partners", 
+            "text": "", 
+            "title": "Industry Partners"
+        }, 
+        {
+            "location": "/community/#cloud-technology-partners", 
+            "text": "", 
+            "title": "Cloud Technology Partners"
+        }, 
+        {
+            "location": "/media/", 
+            "text": "Presentations\n\n\n\n\nAnthony Voellm\n: SIJP 2015 Lecture - \u201cPerfKit: Benchmarking the Cloud\u201d\n\n\n\n\nIvan Santa Maria Filho\n: CouchBase Connect 2015 in San Francisco.  Ivanco-presented \nthis talk\n with CouchBase.\n\n\nAnthony Voellm\n: GTAC 2014: The Challenge of Fairly Comparing Cloud Providers and What We're Doing About It\n \n\n\nAnthony Voellm\n: GTAC 2011: Keynote - Part the Clouds and See Fact from Fiction\n \n\n\nArticles\n\n\n\n\nTheRegister\n: \n\u201cGoogle offers universal cloud benchmarking tool\u201d\n\n\nTechCrunch\n: \n\u201cGoogle Launches Open-Source, Cross-Cloud Benchmarking Tool\u201d\n\n\nInfoworld\n: \n\u201cGoogle whips up PerfKit tools to make cloud benchmarking easier\u201d\n\n\nEweek\n: \n\u201dGoogle Releases Tools for Comparing Cloud Performance Across Vendors\u201d\n\n\nNetwork World\n: \n\u201cGoogle\u2019s new open-source PerfKit framework watches cloud application performance\u201d\n\n\nBetaNews\n: \n\u201dGoogle's PerfKit Benchmarker tests the performance of cloud services\u201d\n\n\nCloud Computing Today\n: \nGoogle Releases Open Source Tool For Cloud Performance Benchmarks And Comparisons\u201d\n\n\nInfoQ\n: \nGoogle Teams Up With Rivals to Deliver Cloud Benchmarking Toolkit\u201d\n\n\n451 Research\n: \n\u201cGoogle's new weapon in battleground of cloud price-performance: PerfKit\u201d\n\n\nComputerWeekly\n: \n\u201cGoogle Perfkit: a 'living benchmark' for evaluating cloud\u201d\n\n\nPublickey\n: \n\u201dGoogle\u3001\u30af\u30e9\u30a6\u30c9\u306e\u30d9\u30f3\u30c1\u30de\u30fc\u30af\u30c4\u30fc\u30eb\u300cPerfKitBenchmarker\u300d\u3068\u53ef\u8996\u5316\u30c4\u30fc\u30eb\u300cPerfKitExplorer\u300d\u3092\u30aa\u30fc\u30d7\u30f3\u30bd\u30fc\u30b9\u3067\u516c\u958b\u201d", 
+            "title": "Media"
+        }, 
+        {
+            "location": "/media/#presentations", 
+            "text": "Anthony Voellm : SIJP 2015 Lecture - \u201cPerfKit: Benchmarking the Cloud\u201d   Ivan Santa Maria Filho : CouchBase Connect 2015 in San Francisco.  Ivanco-presented  this talk  with CouchBase.  Anthony Voellm : GTAC 2014: The Challenge of Fairly Comparing Cloud Providers and What We're Doing About It\n   Anthony Voellm : GTAC 2011: Keynote - Part the Clouds and See Fact from Fiction", 
+            "title": "Presentations"
+        }, 
+        {
+            "location": "/media/#articles", 
+            "text": "TheRegister :  \u201cGoogle offers universal cloud benchmarking tool\u201d  TechCrunch :  \u201cGoogle Launches Open-Source, Cross-Cloud Benchmarking Tool\u201d  Infoworld :  \u201cGoogle whips up PerfKit tools to make cloud benchmarking easier\u201d  Eweek :  \u201dGoogle Releases Tools for Comparing Cloud Performance Across Vendors\u201d  Network World :  \u201cGoogle\u2019s new open-source PerfKit framework watches cloud application performance\u201d  BetaNews :  \u201dGoogle's PerfKit Benchmarker tests the performance of cloud services\u201d  Cloud Computing Today :  Google Releases Open Source Tool For Cloud Performance Benchmarks And Comparisons\u201d  InfoQ :  Google Teams Up With Rivals to Deliver Cloud Benchmarking Toolkit\u201d  451 Research :  \u201cGoogle's new weapon in battleground of cloud price-performance: PerfKit\u201d  ComputerWeekly :  \u201cGoogle Perfkit: a 'living benchmark' for evaluating cloud\u201d  Publickey :  \u201dGoogle\u3001\u30af\u30e9\u30a6\u30c9\u306e\u30d9\u30f3\u30c1\u30de\u30fc\u30af\u30c4\u30fc\u30eb\u300cPerfKitBenchmarker\u300d\u3068\u53ef\u8996\u5316\u30c4\u30fc\u30eb\u300cPerfKitExplorer\u300d\u3092\u30aa\u30fc\u30d7\u30f3\u30bd\u30fc\u30b9\u3067\u516c\u958b\u201d", 
+            "title": "Articles"
+        }, 
+        {
+            "location": "/contributing/contributing/", 
+            "text": "Contributing\n\n\nHow to Extend PerfKit Benchmarker\n\n\n\n\nFirst start with the \nCONTRIBUTING.md\n\nfile.  It has the basics on how to work with PerfKitBenchmarker, and how to submit your pull requests.\n\n\nIn addition to the \nCONTRIBUTING.md\n\nfile we have added a lot of comments into the code to make it easy to:\n\n\n\n\nAdd new benchmarks (e.g.: \n--benchmarks=\nnew benchmark\n)\n\n\nAdd new package/os type support (e.g.: \n--os_type=\nnew os type\n)\n\n\nAdd new providers (e.g.: \n--cloud=\nnew provider\n)\n\n\netc.\n\n\n\n\nEven with lots of comments we make to support more detailed documentation.  You will find the documentation we have on the \nwiki\n.  Missing documentation you want?  Start a page and/or open an \nissue\n to get it added.\n\n\nIntegration Testing\n\n\n\n\nIn addition to regular unit tests, which are run via\n\nhooks/check-everything\n, PerfKit Benchmarker has\nintegration tests, which create actual cloud resources and take time and money\nto run. For this reason, they will only run when the variable\n\nPERFKIT_INTEGRATION\n is defined in the environment. The command\n\n\n  tox -e integration\n\n\n\n\nwill run the integration tests. The integration tests depend on having installed\nand configured all of the relevant cloud provider SDKs, and will fail if you\nhave not done so.", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/contributing/contributing/#contributing", 
+            "text": "", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/contributing/contributing/#how-to-extend-perfkit-benchmarker", 
+            "text": "First start with the  CONTRIBUTING.md \nfile.  It has the basics on how to work with PerfKitBenchmarker, and how to submit your pull requests.  In addition to the  CONTRIBUTING.md \nfile we have added a lot of comments into the code to make it easy to:   Add new benchmarks (e.g.:  --benchmarks= new benchmark )  Add new package/os type support (e.g.:  --os_type= new os type )  Add new providers (e.g.:  --cloud= new provider )  etc.   Even with lots of comments we make to support more detailed documentation.  You will find the documentation we have on the  wiki .  Missing documentation you want?  Start a page and/or open an  issue  to get it added.", 
+            "title": "How to Extend PerfKit Benchmarker"
+        }, 
+        {
+            "location": "/contributing/contributing/#integration-testing", 
+            "text": "In addition to regular unit tests, which are run via hooks/check-everything , PerfKit Benchmarker has\nintegration tests, which create actual cloud resources and take time and money\nto run. For this reason, they will only run when the variable PERFKIT_INTEGRATION  is defined in the environment. The command    tox -e integration  will run the integration tests. The integration tests depend on having installed\nand configured all of the relevant cloud provider SDKs, and will fail if you\nhave not done so.", 
+            "title": "Integration Testing"
+        }, 
+        {
+            "location": "/contributing/license/", 
+            "text": "Licensing\n\n\nPerfKit Benchmarker provides wrappers and workload definitions around popular benchmark tools. We made it very simple\nto use and automate everything we can.  It instantiates VMs on the Cloud provider of your choice, automatically\ninstalls benchmarks, and runs the workloads without user interaction.\n\n\nDue to the level of automation you will not see prompts for software installed as part of a benchmark run.\nTherefore you must accept the license of each of the benchmarks individually, and take responsibility for using them\nbefore you use the PerfKit Benchmarker.\n\n\nIn its current release these are the benchmarks that are executed:\n\n\n\n\naerospike\n: \nApache v2 for the client\n\n    and \nGNU AGPL v3.0 for the server\n\n\nbonnie++\n: \nGPL v2\n\n\ncassandra_ycsb\n: \nApache v2\n\n\ncassandra_stress\n: \nApache v2\n\n\ncloudsuite3.0\n: \nCloudSuite 3.0 license\n\n\ncluster_boot\n: MIT License\n\n\ncoremark\n: \nEEMBC\n\n\ncopy_throughput\n: Apache v2\n\n\nfio\n: \nGPL v2\n\n\nhadoop_terasort\n: \nApache v2\n\n\nhpcc\n: \nOriginal BSD license\n\n\niperf\n: \nBSD license\n\n\nmemtier_benchmark\n: \nGPL v2\n\n\nmesh_network\n: \nHP license\n\n\nmongodb\n: \nDeprecated\n. \nGNU AGPL v3.0\n\n\nmongodb_ycsb\n: \nGNU AGPL v3.0\n\n\nmultichase\n:\n    \nApache v2\n\n\nnetperf\n: \nHP license\n\n\noldisim\n:\n    \nApache v2\n\n\nobject_storage_service\n: Apache v2\n\n\nping\n: No license needed.\n\n\nsilo\n: MIT License\n\n\nscimark2\n: \npublic domain\n\n\nspeccpu2006\n: \nSPEC CPU2006\n\n\nsysbench_oltp\n: \nGPL v2\n\n\ntomcat\n:\n    \nApache v2\n\n\nunixbench\n:\n    \nGPL v2\n\n\nwrk\n:\n    \nModified Apache v2\n\n\nycsb\n (used by \nmongodb\n, \nhbase_ycsb\n, and others):\n    \nApache v2\n\n\n\n\nSome of the benchmarks invoked require Java. You must also agree with the following license:\n\n\n\n\nopenjdk-7-jre\n: \nGPL v2 with the Classpath Exception\n\n\n\n\nCoreMark\n setup cannot be automated. EEMBC requires users to agree with their terms and conditions, and PerfKit\nBenchmarker users must manually download the CoreMark tarball from their website and save it under the\n\nperfkitbenchmarker/data\n folder (e.g. \n~/PerfKitBenchmarker/perfkitbenchmarker/data/coremark_v1.0.tgz\n)\n\n\nSPEC CPU2006\n benchmark setup cannot be\nautomated. SPEC requires that users purchase a license and agree with their\nterms and conditions. PerfKit Benchmarker users must manually download\n\ncpu2006-1.2.iso\n from the SPEC website, save it under the\n\nperfkitbenchmarker/data\n folder (e.g.\n\n~/PerfKitBenchmarker/perfkitbenchmarker/data/cpu2006-1.2.iso\n), and also\nsupply a runspec cfg file (e.g.\n\n~/PerfKitBenchmarker/perfkitbenchmarker/data/linux64-x64-gcc47.cfg\n).\nAlternately, PerfKit Benchmarker can accept a tar file that can be generated\nwith the following steps:\n\n\n\n\nExtract the contents of \ncpu2006-1.2.iso\n into a directory named \ncpu2006\n\n\nRun \ncpu2006/install.sh\n\n\nCopy the cfg file into \ncpu2006/config\n\n\nCreate a tar file containing the \ncpu2006\n directory, and place it under the\n  \nperfkitbenchmarker/data\n folder (e.g.\n  \n~/PerfKitBenchmarker/perfkitbenchmarker/data/cpu2006v1.2.tgz\n).\n\n\n\n\nPerfKit Benchmarker will use the tar file if it is present. Otherwise, it will\nsearch for the iso and cfg files.", 
+            "title": "Licensing"
+        }, 
+        {
+            "location": "/contributing/license/#licensing", 
+            "text": "PerfKit Benchmarker provides wrappers and workload definitions around popular benchmark tools. We made it very simple\nto use and automate everything we can.  It instantiates VMs on the Cloud provider of your choice, automatically\ninstalls benchmarks, and runs the workloads without user interaction.  Due to the level of automation you will not see prompts for software installed as part of a benchmark run.\nTherefore you must accept the license of each of the benchmarks individually, and take responsibility for using them\nbefore you use the PerfKit Benchmarker.  In its current release these are the benchmarks that are executed:   aerospike :  Apache v2 for the client \n    and  GNU AGPL v3.0 for the server  bonnie++ :  GPL v2  cassandra_ycsb :  Apache v2  cassandra_stress :  Apache v2  cloudsuite3.0 :  CloudSuite 3.0 license  cluster_boot : MIT License  coremark :  EEMBC  copy_throughput : Apache v2  fio :  GPL v2  hadoop_terasort :  Apache v2  hpcc :  Original BSD license  iperf :  BSD license  memtier_benchmark :  GPL v2  mesh_network :  HP license  mongodb :  Deprecated .  GNU AGPL v3.0  mongodb_ycsb :  GNU AGPL v3.0  multichase :\n     Apache v2  netperf :  HP license  oldisim :\n     Apache v2  object_storage_service : Apache v2  ping : No license needed.  silo : MIT License  scimark2 :  public domain  speccpu2006 :  SPEC CPU2006  sysbench_oltp :  GPL v2  tomcat :\n     Apache v2  unixbench :\n     GPL v2  wrk :\n     Modified Apache v2  ycsb  (used by  mongodb ,  hbase_ycsb , and others):\n     Apache v2   Some of the benchmarks invoked require Java. You must also agree with the following license:   openjdk-7-jre :  GPL v2 with the Classpath Exception   CoreMark  setup cannot be automated. EEMBC requires users to agree with their terms and conditions, and PerfKit\nBenchmarker users must manually download the CoreMark tarball from their website and save it under the perfkitbenchmarker/data  folder (e.g.  ~/PerfKitBenchmarker/perfkitbenchmarker/data/coremark_v1.0.tgz )  SPEC CPU2006  benchmark setup cannot be\nautomated. SPEC requires that users purchase a license and agree with their\nterms and conditions. PerfKit Benchmarker users must manually download cpu2006-1.2.iso  from the SPEC website, save it under the perfkitbenchmarker/data  folder (e.g. ~/PerfKitBenchmarker/perfkitbenchmarker/data/cpu2006-1.2.iso ), and also\nsupply a runspec cfg file (e.g. ~/PerfKitBenchmarker/perfkitbenchmarker/data/linux64-x64-gcc47.cfg ).\nAlternately, PerfKit Benchmarker can accept a tar file that can be generated\nwith the following steps:   Extract the contents of  cpu2006-1.2.iso  into a directory named  cpu2006  Run  cpu2006/install.sh  Copy the cfg file into  cpu2006/config  Create a tar file containing the  cpu2006  directory, and place it under the\n   perfkitbenchmarker/data  folder (e.g.\n   ~/PerfKitBenchmarker/perfkitbenchmarker/data/cpu2006v1.2.tgz ).   PerfKit Benchmarker will use the tar file if it is present. Otherwise, it will\nsearch for the iso and cfg files.", 
+            "title": "Licensing"
+        }
+    ]
+}

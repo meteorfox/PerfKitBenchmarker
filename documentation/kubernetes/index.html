@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Kubernetes - PerfKit Benchmarker</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../extra.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">PerfKit Benchmarker</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Configure Cloud Provider Clients</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../gcp/">Google Cloud Platform</a>
+</li>
+
+        
+            
+<li >
+    <a href="../openstack/">OpenStack</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Kubernetes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../cloudstack/">CloudStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../aws/">Amazon Web Services</a>
+</li>
+
+        
+            
+<li >
+    <a href="../azure/">Microsoft Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../alicloud/">AliCloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../digitalocean/">Digital Ocean</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rackspace/">Rackspace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../mesos/">Apache Mesos</a>
+</li>
+
+        
+            
+<li >
+    <a href="../image-prereqs-docker-based-clouds/">Configuring Docker-based Cloud Provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Benchmarks</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../benchmarks/benchmark-sets/">Benchmark Sets</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/object-storage/">Configuring Object Storage Benchmark</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/linux-benchmarks/">Linux Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/windows-benchmarks/">Windows Benchmarks</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+<li >
+    <a href="../configurations/">Configurations</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../community/">Community</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../media/">Media</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../contributing/dev-workflow/">Development Workflow</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../contributing/dev-env/">Setting Up Dev Environment</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../contributing/license/">Licensing</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../openstack/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../cloudstack/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#kubernetes">Kubernetes</a></li>
+        
+            <li><a href="#kubernetes-configuration-and-credentials">Kubernetes configuration and credentials</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="kubernetes">Kubernetes</h1>
+<h2 id="kubernetes-configuration-and-credentials">Kubernetes configuration and credentials</h2>
+<hr />
+<p>Perfkit uses <code>kubectl</code> binary in order to communicate with Kubernetes cluster - you need to pass the path to <code>kubectl</code> binary using <code>--kubectl</code> flag. It's recommended to use version 1.0.1 (available to download here: https://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubectl).
+Authentication to Kubernetes cluster is done via <code>kubeconfig</code> file (https://github.com/kubernetes/kubernetes/blob/release-1.0/docs/user-guide/kubeconfig-file.md). Its path is passed using <code>--kubeconfig</code> flag.</p>
+<p><strong>Image prerequisites</strong>  </p>
+<p>Docker instances by default don't allow to SSH into them. Thus it is important to configure your Docker image so that it has SSH server installed. You can use your own image or build a new one based on a Dockerfile placed in tools/docker_images directory - in this case please refer to https://github.com/GoogleCloudPlatform/PerfKitBenchmarker/tree/master/tools/docker_images document.</p>
+<p><strong>Kubernetes cluster configuration</strong><br />
+If your Kubernetes cluster is running on CoreOS:</p>
+<ol>
+<li>Fix <code>$PATH</code> environment variable so that the appropriate binaries can be found:</li>
+</ol>
+<pre><code>   sudo mkdir /etc/systemd/system/kubelet.service.d
+   sudo vim /etc/systemd/system/kubelet.service.d/10-env.conf
+</code></pre>
+
+<p>Add the following line to <code>[Service]</code> section:</p>
+<pre><code>  Environment=PATH=/opt/bin:/usr/bin:/usr/sbin:$PATH
+</code></pre>
+
+<ol>
+<li>Reboot the node:</li>
+</ol>
+<pre><code>  sudo reboot
+</code></pre>
+
+<p>Note that some benchmark require to run within a privileged container. By default Kubernetes doesn't allow to schedule Dockers in privileged mode - you have to add <code>--allow-privileged=true</code> flag to <code>kube-apiserver</code> and each <code>kubelet</code> startup commands.</p>
+<p><strong>Ceph integration</strong><br />
+When you run benchmarks with standard scratch disk type (<code>--scratch_disk_type=standard</code> - which is a default option), Ceph storage will be used. There are some configuration steps you need to follow before you will be able to spawn Kubernetes PODs with Ceph volume. On each of Kubernetes-Nodes and on the machine which is running Perfkit benchmarks do the following:</p>
+<ol>
+<li>Copy <code>/etc/ceph</code> directory from Ceph-host  </li>
+<li>
+<p>Install <code>ceph-common</code> package so that <code>rbd</code> command is available</p>
+</li>
+<li>
+<p>If your Kubernetes cluster is running on CoreOS, then you need to create a bash script called <code>rbd</code> which will run <code>rbd</code> command inside a Docker container:</p>
+</li>
+</ol>
+<pre><code>      #!/usr/bin/bash
+      /usr/bin/docker run -v /etc/ceph:/etc/ceph -v /dev:/dev -v /sys:/sys  --net=host --privileged=true --rm=true ceph/rbd $@
+</code></pre>
+
+<p>Save the file as 'rbd'. Then:</p>
+<pre><code>      chmod +x rbd
+      sudo mkdir /opt/bin
+      sudo cp rbd /opt/bin
+</code></pre>
+
+<p>Install <code>rbdmap</code> (https://github.com/ceph/ceph-docker/tree/master/examples/coreos/rbdmap):</p>
+<pre><code>      git clone https://github.com/ceph/ceph-docker.git
+      cd ceph-docker/examples/coreos/rbdmap/
+      sudo mkdir /opt/sbin
+      sudo cp rbdmap /opt/sbin
+      sudo cp ceph-rbdnamer /opt/bin
+      sudo cp 50-rbd.rules /etc/udev/rules.d
+      sudo reboot
+</code></pre>
+
+<p>You have two Ceph authentication options available (http://kubernetes.io/v1.0/examples/rbd/README.html):</p>
+<ol>
+<li>Keyring - pass the path to the keyring file using <code>--ceph_keyring</code> flag</li>
+<li>Secret. In this case you have to create a secret first:</li>
+</ol>
+<p>Retrieve base64-encoded Ceph admin key:</p>
+<pre><code>   ceph auth get-key client.admin | base64
+   QVFEYnpPWlZWWnJLQVJBQXdtNDZrUDlJUFo3OXdSenBVTUdYNHc9PQ==  
+</code></pre>
+
+<p>Create a file called <code>create_ceph_admin.yml</code> and replace the <code>key</code> value with the output from the previous command:</p>
+<pre><code>   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: my-ceph-secret
+   data:
+     key: QVFEYnpPWlZWWnJLQVJBQXdtNDZrUDlJUFo3OXdSenBVTUdYNHc9PQ==
+</code></pre>
+
+<p>Add secret to Kubernetes:  </p>
+<pre><code>   kubectl create -f create_ceph_admin.yml
+</code></pre>
+
+<p>You will have to pass the Secret name (using <code>--ceph_secret</code> flag) when running the benchmakrs. In this case it should be: <code>--ceph_secret=my-ceph-secret</code>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+                <center>Copyright &copy PerfKit Benchmarker Authors</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

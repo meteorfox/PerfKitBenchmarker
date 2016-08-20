@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Linux Benchmarks - PerfKit Benchmarker</title>
+
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link href="../../../extra.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">PerfKit Benchmarker</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cloud Provider Clients</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../providers/gcp/">Google Cloud Platform</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/aws/">Amazon Web Services</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/azure/">Microsoft Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/alicloud/">AliCloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/digitalocean/">Digital Ocean</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/rackspace/">Rackspace Public Cloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/profitbricks/">ProfitBricks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/kubernetes/">Kubernetes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/openstack/">OpenStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/cloudstack/">CloudStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/mesos/">Apache Mesos</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/staticvm/">Pre-provisioned Machines</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../providers/image-prereqs-docker-based-clouds/">Configuring Docker-based Cloud Provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Benchmarks</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../benchmark-sets/">Benchmark Sets</a>
+</li>
+
+        
+            
+<li >
+    <a href="../object-storage/">Configuring Object Storage Benchmark</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Linux Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../windows-benchmarks/">Windows Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../juju/">Juju Support</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+<li >
+    <a href="../../configurations/">Configurations</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../../community/">Community</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../../media/">Media</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../../contributing/contributing/">Contributing</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../../contributing/license/">Licensing</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../object-storage/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../windows-benchmarks/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#linux-benchmarks">Linux Benchmarks</a></li>
+        
+            <li><a href="#system">System</a></li>
+        
+            <li><a href="#cpu">CPU</a></li>
+        
+            <li><a href="#memory">Memory</a></li>
+        
+            <li><a href="#storage">Storage</a></li>
+        
+            <li><a href="#network">Network</a></li>
+        
+            <li><a href="#web-workloads">Web Workloads</a></li>
+        
+            <li><a href="#efpl-cloudsuite">EFPL CloudSuite</a></li>
+        
+            <li><a href="#nosql-workloads">NoSQL Workloads</a></li>
+        
+            <li><a href="#big-data">[Big] Data</a></li>
+        
+            <li><a href="#big-compute">[Big] Compute</a></li>
+        
+            <li><a href="#services">Services</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="linux-benchmarks">Linux Benchmarks</h1>
+<h2 id="system">System</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster Boot</td>
+<td><code>cluster_boot</code></td>
+<td>Records the time required to boot a cluster of VMs.</td>
+</tr>
+<tr>
+<td>UnixBench</td>
+<td><code>unixbench</code></td>
+<td>Unix bench is a holistic performance benchmark, measuing CPU performance,some memory bandwidth, and disk.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cpu">CPU</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPEC CPU2006</td>
+<td><code>speccpu2006</code></td>
+<td>The SPEC CPU 2006 benchmark is SPEC's next-generation, industry-standardized, CPU-intensive benchmark suite, stressing a system's processor, memory subsystem and compiler.</td>
+</tr>
+<tr>
+<td>COREMARK</td>
+<td><code>coremark</code></td>
+<td>CoreMark's primary goals are simplicity and providing a method for benchmarking only a processor's core features.</td>
+</tr>
+<tr>
+<td>Scimark2</td>
+<td><code>scimark2</code></td>
+<td>SciMark2 is a Java (and C) benchmark for scientific and numerical computing. It measures several computational kernels and reports a composite score in approximate Mflops (Millions of floating point operations per second).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="memory">Memory</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MultiChase</td>
+<td><code>multichase</code></td>
+<td>pointer chaser benchmark. It measures the average latency of pointer-chase operations.</td>
+</tr>
+<tr>
+<td>SILO</td>
+<td><code>silo</code></td>
+<td>Silo is a high performance, scalable in-memory database for modern multicore machines.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="storage">Storage</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPEC SFS2014</td>
+<td><code>specsfs2014</code></td>
+<td>The SPEC SFS® 2014 benchmark is the latest version of the Standard Performance Evaluation Corporation benchmark suite measuring file server throughput and response time, providing a standardized method for comparing performance across different vendor platforms.</td>
+</tr>
+<tr>
+<td>Block Storage</td>
+<td><code>block_storage_workloads</code></td>
+<td>Runs fio benchmarks to simulate logging, database and streaming.</td>
+</tr>
+<tr>
+<td>Flexible I/O</td>
+<td><code>fio</code></td>
+<td>Run fio benchmarks</td>
+</tr>
+<tr>
+<td>Copy Throughput</td>
+<td><code>copy_throughput</code></td>
+<td>cp and dd between two attached disks on same vm. scp copy across different vms using external networks.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network">Network</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mesh Network</td>
+<td><code>mesh_network</code></td>
+<td>Runs TCP_RR, TCP_STREAM benchmarks from netperf and compute total throughput and average latency inside mesh network.</td>
+</tr>
+<tr>
+<td>Iperf</td>
+<td><code>iperf</code></td>
+<td>Runs Iperf to collect network throughput.</td>
+</tr>
+<tr>
+<td>NetPerf</td>
+<td><code>netperf</code></td>
+<td>Runs TCP_RR, TCP_CRR, and TCP_STREAM benchmarks from netperf across two machines.</td>
+</tr>
+<tr>
+<td>ping</td>
+<td><code>ping</code></td>
+<td>Runs ping using the internal IP addresses of VMs in the same zone.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="web-workloads">Web Workloads</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OLDISIM</td>
+<td><code>oldisim</code></td>
+<td>oldisim is a framework to support benchmarks that emulate Online Data-Intensive (OLDI) workloads, such as web search and social networking. oldisim includes sample workloads built on top of this framework.</td>
+</tr>
+<tr>
+<td>Tomcat / Wrk</td>
+<td><code>tomcat_wrk</code></td>
+<td>Run wrk against a simple Tomcat web server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="efpl-cloudsuite">EFPL CloudSuite</h2>
+<p>For more info see: <a href="http://cloudsuite.ch/benchmarks/">CloudSuite Benchmarks</a></p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Caching</td>
+<td><code>cloudsuite_data_caching</code></td>
+<td>Runs the Data Caching benchmark.</td>
+</tr>
+<tr>
+<td>Data Serving</td>
+<td><code>cloudsuite_data_serving</code></td>
+<td>Runs the Data Serving benchmark.</td>
+</tr>
+<tr>
+<td>Graph Analytics</td>
+<td><code>cloudsuite_graph_analytics</code></td>
+<td>Runs the Graph Analytics Benchmark.</td>
+</tr>
+<tr>
+<td>In-Memory Analytics</td>
+<td><code>cloudsuite_in_memory_analytics</code></td>
+<td>Runs the In-Memory Analytics benchmark.</td>
+</tr>
+<tr>
+<td>Media Streaming</td>
+<td><code>cloudsuite_media_streaming</code></td>
+<td>Runs the media streaming benchmark.</td>
+</tr>
+<tr>
+<td>Web Search</td>
+<td><code>cloudsuite_web_search</code></td>
+<td>Runs the web search benchmark.</td>
+</tr>
+<tr>
+<td>Web Serving</td>
+<td><code>cloudsuite_web_serving</code></td>
+<td>Runs the web serving benchmark.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nosql-workloads">NoSQL Workloads</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aerospike</td>
+<td><code>aerospike_ycsb</code></td>
+<td>Runs YCSB against Aerospike.</td>
+</tr>
+<tr>
+<td>Cassandra</td>
+<td><code>cassandra_ycsb</code></td>
+<td>Runs YCSB against Cassandra.</td>
+</tr>
+<tr>
+<td>HBase</td>
+<td><code>hbase_ycsb</code></td>
+<td>Runs YCSB against HBase.</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td><code>mongodb_ycsb</code></td>
+<td>Runs YCSB against MongoDB.</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td><code>redis_ycsb</code></td>
+<td>Runs YCSB against Redis.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="big-data">[Big] Data</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hadoop TeraSort</td>
+<td><code>hadoop_terasort</code></td>
+<td>Runs TeraSort on Hadoop.</td>
+</tr>
+<tr>
+<td>Sysbench OLTP</td>
+<td><code>sysbench_oltp</code></td>
+<td>Runs sysbench --oltp.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="big-compute">[Big] Compute</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HPCC</td>
+<td><code>hpcc</code></td>
+<td>Runs HPC Challenge benchmarks.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="services">Services</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud BigTable</td>
+<td><code>cloud_bigtable_ycsb</code></td>
+<td>Runs YCSB against Google Cloud BigTable.</td>
+</tr>
+<tr>
+<td>Cloud Datastore</td>
+<td><code>cloud_datastore_ycsb</code></td>
+<td>Runs YCSB against Google Cloud Datastore.</td>
+</tr>
+<tr>
+<td>Object Storage</td>
+<td><code>object_storage_service</code></td>
+<td>Object Storage benchmarks.</td>
+</tr>
+<tr>
+<td>MySQL Service</td>
+<td><code>mysql_service</code></td>
+<td>This is a set of benchmarks that measures performance of MySQL Databases on managed MySQL services.</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+                <center>Copyright &copy PerfKit Benchmarker Authors</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script>var base_url = '../../..';</script>
+        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+        <script src="../../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

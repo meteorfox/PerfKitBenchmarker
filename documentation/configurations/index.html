@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Configurations - PerfKit Benchmarker</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../extra.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">PerfKit Benchmarker</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cloud Provider Clients</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../providers/gcp/">Google Cloud Platform</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/aws/">Amazon Web Services</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/azure/">Microsoft Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/alicloud/">AliCloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/digitalocean/">Digital Ocean</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/rackspace/">Rackspace Public Cloud</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/profitbricks/">ProfitBricks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/kubernetes/">Kubernetes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/openstack/">OpenStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/cloudstack/">CloudStack</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/mesos/">Apache Mesos</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/staticvm/">Pre-provisioned Machines</a>
+</li>
+
+        
+            
+<li >
+    <a href="../providers/image-prereqs-docker-based-clouds/">Configuring Docker-based Cloud Provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Benchmarks</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../benchmarks/benchmark-sets/">Benchmark Sets</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/object-storage/">Configuring Object Storage Benchmark</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/linux-benchmarks/">Linux Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/windows-benchmarks/">Windows Benchmarks</a>
+</li>
+
+        
+            
+<li >
+    <a href="../benchmarks/juju/">Juju Support</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+<li class="active">
+    <a href="./">Configurations</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../community/">Community</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../media/">Media</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../contributing/contributing/">Contributing</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../contributing/license/">Licensing</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../benchmarks/juju/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../community/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#configuring-perfkit-benchmarker">Configuring PerfKit Benchmarker</a></li>
+        
+            <li><a href="#overview">Overview</a></li>
+        
+            <li><a href="#structure-of-a-configuration-file">Structure of a Configuration File</a></li>
+        
+            <li><a href="#specifying-configurations-and-precedence-rules">Specifying Configurations and Precedence Rules</a></li>
+        
+            <li><a href="#result-metadata">Result Metadata</a></li>
+        
+            <li><a href="#examples">Examples</a></li>
+        
+            <li><a href="#configurations-and-configuration-overrides">Configurations and Configuration Overrides</a></li>
+        
+            <li><a href="#specifying-flags-in-configuration-files">Specifying Flags in Configuration Files</a></li>
+        
+            <li><a href="#proxy-configuration-for-vm-guests">Proxy configuration for VM guests.</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="configuring-perfkit-benchmarker">Configuring PerfKit Benchmarker</h1>
+<h2 id="overview">Overview</h2>
+<hr />
+<p>A configuration describes the resources necessary to run a benchmark as well as the options that should be used while running it. Benchmarks have default configurations which determine how they will run if users don't specify any options. Users can override the default configuration settings by providing a configuration file or by using command line flags. In addition, configurations provide a means to run with static (i.e. pre-provisioned) machines and to run multiple copies of the same benchmark in a single PKB invocation.</p>
+<h2 id="structure-of-a-configuration-file">Structure of a Configuration File</h2>
+<hr />
+<p>Configuration files are written in <a href="http://www.yaml.org/">YAML</a>, and are for the most part just nested dictionaries. At each level of the configuration, there are a set of keys which are allowed:</p>
+<ul>
+<li>Valid top level keys:<ul>
+<li><code>benchmarks</code>: A YAML array of dictionaries mapping benchmark names to their
+  configs. This also determines which benchmarks to run.</li>
+<li><code>*any_benchmark_name*</code>: If the <code>benchmarks</code> key is not specified, then
+  specifying a benchmark name mapped to a config will override
+  that benchmark's default configuration in the event that that
+  benchmark is run.</li>
+<li>Any keys not listed above are allowed, but will not affect PKB.</li>
+</ul>
+</li>
+<li>Valid config keys:<ul>
+<li><code>vm_groups</code>: A YAML dictionary mapping the names of VM groups to the groups
+  themselves. These names can be any string.</li>
+<li><code>description</code>: A description of the benchmark.</li>
+<li><code>flags</code>: A YAML dictionary with overrides for default flag values.</li>
+</ul>
+</li>
+<li>Valid VM group keys:<ul>
+<li><code>vm_spec</code>: A YAML dictionary mapping names of clouds (e.g. AWS) to the
+  actual VM spec.</li>
+<li><code>disk_spec</code>: A YAML dictionary mapping names of clouds to the actual
+  disk spec.</li>
+<li><code>vm_count</code>: The number of VMs to create in this group. If this key isn't
+  specified, it defaults to 1.</li>
+<li><code>disk_count</code>: The number of disks to attach to VMs of this group. If this key
+  isn't specified, it defaults to 1.</li>
+<li><code>cloud</code>: The name of the cloud to create the group in. This is used for
+  multi-cloud configurations.</li>
+<li><code>os_type</code>: The OS type of the VMs to create (see the flag of the same name for
+  more information). This is used if you want to run a benchmark using VMs
+  with different OS types (e.g. Debian and RHEL).</li>
+<li><code>static_vms</code>: A YAML array of Static VM specs. These VMs will be used before
+  any Cloud VMs are created. The total number of VMs will still add up to
+  the number specified by the <code>vm_count</code> key.</li>
+</ul>
+</li>
+<li>For valid VM spec keys, see <a href="https://github.com/GoogleCloudPlatform/PerfKitBenchmarker/blob/master/perfkitbenchmarker/virtual_machine.py">virtual_machine.BaseVmSpec</a> and derived classes.</li>
+<li>For valid disk spec keys, see <a href="https://github.com/GoogleCloudPlatform/PerfKitBenchmarker/blob/master/perfkitbenchmarker/disk.py">disk.BaseDiskSpec</a> and derived classes.</li>
+</ul>
+<h2 id="specifying-configurations-and-precedence-rules">Specifying Configurations and Precedence Rules</h2>
+<hr />
+<p>The most basic way to specify a configuration is to use the <code>--benchmark_config_file</code> command line flag. Anything specified in the file will override the default configuration. Here is an example showing how to change the number of VMs created in the <code>cluster_boot</code> benchmark:</p>
+<pre><code>./pkb.py --benchmark_config_file=cluster_boot.yml --benchmarks=cluster_boot
+</code></pre>
+
+<p>[cluster_boot.yml]</p>
+<pre><code class="yaml">cluster_boot:
+  vm_groups:
+    default:
+      vm_count: 10
+</code></pre>
+
+<p>A second flag, <code>--config_override</code> will directly override the config file. It can be specified multiple times. Since it overrides the config file, any settings supplied via this flag have a higher priority than those supplied via the <code>--benchmark_config_file</code> flag. Here is an example performing the same change to the default <code>cluster_boot</code> configuration as above:</p>
+<pre><code>./pkb.py --config_override=&quot;cluster_boot.vm_groups.default.vm_count=10&quot; --benchmarks=cluster_boot
+</code></pre>
+
+<p>Finally, any other flags which the user specifies on the command line have the highest priority. For example, specifying the <code>--machine_type</code> flag will cause all VM groups to use that machine type, regardless of any other settings.</p>
+<h2 id="result-metadata">Result Metadata</h2>
+<hr />
+<p>Result metadata has been slightly modified as part of the configuration change (unless the VM group's name is 'default', in which case there is no change).
+The metadata created by the <code>DefaultMetadataProvider</code> is now prefixed by the VM group name. For example, if a VM group's name is 'workers', then all samples will contain <code>workers_machine_type</code>, <code>workers_cloud</code>, and <code>workers_zone</code> metadata. This change was made to enable benchmarks with heterogeneous VM groups.</p>
+<h2 id="examples">Examples</h2>
+<hr />
+<h3 id="cross-cloud-netperf">Cross-Cloud <code>netperf</code></h3>
+<pre><code class="yaml">netperf:
+  vm_groups:
+    vm_1:
+      cloud: AWS
+    vm_2:
+      cloud: GCP
+</code></pre>
+
+<h3 id="multiple-iperf-runs">Multiple <code>iperf</code> runs</h3>
+<p>Run <code>iperf</code> under the default configuration, once with a single client thread, once with 8:</p>
+<pre><code class="yaml">benchmarks:
+  - iperf:
+      flags:
+        iperf_sending_thread_count: 1
+  - iperf:
+      flags:
+        iperf_sending_thread_count: 8
+</code></pre>
+
+<h3 id="fio-with-static-vms"><code>fio</code> with Static VMs</h3>
+<p>Testing against a mounted filesystem (under <code>/scratch</code>) for <code>vm1</code>, and against the disk directly (<code>/dev/sdb</code>) for <code>vm2</code>.</p>
+<pre><code class="yaml">my_static_vms:  # Any key is accepted here.
+  - &amp;vm1
+    user_name: perfkit
+    ssh_private_key: /absolute/path/to/key
+    ip_address: 1.1.1.1
+    disk_specs:
+      - mount_point: /scratch
+  - &amp;vm2
+    user_name: perfkit
+    ssh_private_key: /absolute/path/to/key
+    ip_address: 2.2.2.2
+    disk_specs:
+      - device_path: /dev/sdb
+
+benchmarks:
+  - fio: {vm_groups: {default: {static_vms: [*vm1]}},
+          flags: {against_device: False}}
+  - fio: {vm_groups: {default: {static_vms: [*vm2]}},
+          flags: {against_device: True}}
+</code></pre>
+
+<h3 id="cross-region-iperf">Cross region <code>iperf</code></h3>
+<pre><code class="yaml">iperf:
+  vm_groups:
+    vm_1:
+      cloud: GCP
+      vm_spec:
+        GCP:
+          zone: us-central1-b
+    vm_2:
+      cloud: GCP
+      vm_spec:
+        GCP:
+          zone: europe-west1-d
+</code></pre>
+
+<h3 id="fio-using-local-ssds"><code>fio</code> using Local SSDs</h3>
+<pre><code class="yaml">fio:
+  vm_groups:
+    default:
+      cloud: AWS
+      vm_spec:
+        AWS:
+          machine_type: i2.2xlarge
+      disk_spec:
+        AWS:
+          disk_type: local
+          num_striped_disks: 2
+</code></pre>
+
+<h2 id="configurations-and-configuration-overrides">Configurations and Configuration Overrides</h2>
+<hr />
+<p>Each benchmark as an independent configuration which is written in YAML.
+Users may override this default configuration by providing a configuration.
+This allows for much more complex setups than previously possible,
+including running benchmarks across clouds.</p>
+<p>A benchmark configuration has a somewhat simple structure. It is essentially
+just a series of nested dictionaries. At the top level, it contains VM groups.
+VM groups are logical groups of homogeneous machines. The VM groups hold both a
+<code>vm_spec</code> and a <code>disk_spec</code> which contain the parameters needed to
+create members of that group. Here is an example of an expanded configuration:</p>
+<pre><code class="yaml">hbase_ycsb:
+  vm_groups:
+    loaders:
+      vm_count: 4
+      vm_spec:
+        GCP:
+          machine_type: n1-standard-1
+          image: ubuntu-14-04
+          zone: us-central1-c
+        AWS:
+          machine_type: m3.medium
+          image: ami-######
+          zone: us-east-1a
+        # Other clouds here...
+      # This specifies the cloud to use for the group. This allows for
+      # benchmark configurations that span clouds.
+      cloud: AWS
+      # No disk_spec here since these are loaders.
+    master:
+      vm_count: 1
+      cloud: GCP
+      vm_spec:
+        GCP:
+          machine_type:
+            cpus: 2
+            memory: 10.0GiB
+          image: ubuntu-14-04
+          zone: us-central1-c
+        # Other clouds here...
+      disk_count: 1
+      disk_spec:
+        GCP:
+          disk_size: 100
+          disk_type: standard
+          mount_point: /scratch
+        # Other clouds here...
+    workers:
+      vm_count: 4
+      cloud: GCP
+      vm_spec:
+        GCP:
+          machine_type: n1-standard-4
+          image: ubuntu-14-04
+          zone: us-central1-c
+        # Other clouds here...
+      disk_count: 1
+      disk_spec:
+        GCP:
+          disk_size: 500
+          disk_type: remote_ssd
+          mount_point: /scratch
+        # Other clouds here...
+</code></pre>
+
+<p>For a complete list of keys for <code>vm_spec</code>s and <code>disk_spec</code>s see
+<a href="https://github.com/GoogleCloudPlatform/PerfKitBenchmarker/blob/master/perfkitbenchmarker/virtual_machine.py"><code>virtual_machine.BaseVmSpec</code></a>
+and
+<a href="https://github.com/GoogleCloudPlatform/PerfKitBenchmarker/blob/master/perfkitbenchmarker/disk.py"><code>disk.BaseDiskSpec</code></a>
+and their derived classes.</p>
+<p>User configs are applied on top of the existing default config and can be
+specified in two ways. The first is by supplying a config file via the
+<code>--benchmark_config_file</code> flag. The second is by specifying a single setting to
+override via the <code>--config_override</code> flag.</p>
+<p>A user config file only needs to specify the settings which it is intended to
+override. For example if the only thing you want to do is change the number of
+VMs for the <code>cluster_boot</code> benchmark, this config is sufficient:</p>
+<pre><code class="yaml">cluster_boot:
+  vm_groups:
+    default:
+      vm_count: 100
+</code></pre>
+
+<p>You can achieve the same effect by specifying the <code>--config_override</code> flag.
+The value of the flag should be a path within the YAML (with keys delimited by
+periods), an equals sign, and finally the new value:</p>
+<pre><code>--config_override=cluster_boot.vm_groups.default.vm_count=100
+</code></pre>
+
+<p>See the section below for how to use static (i.e. pre-provisioned) machines in your config.</p>
+<h2 id="specifying-flags-in-configuration-files">Specifying Flags in Configuration Files</h2>
+<hr />
+<p>You can now specify flags in configuration files by using the <code>flags</code> key at the
+top level in a benchmark config. The expected value is a dictionary mapping
+flag names to their new default values. The flags are only defaults; it's still
+possible to override them via the command line. It's even possible to specify
+conflicting values of the same flag in different benchmarks:</p>
+<pre><code class="yaml">iperf:
+  flags:
+    machine_type: n1-standard-2
+    zone: us-central1-b
+    iperf_sending_thread_count: 2
+
+netperf:
+  flags:
+    machine_type: n1-standard-8
+</code></pre>
+
+<p>The new defaults will only apply to the benchmark in which they are specified.</p>
+<h2 id="proxy-configuration-for-vm-guests">Proxy configuration for VM guests.</h2>
+<hr />
+<p>If the VM guests do not have direct Internet access in the cloud
+environment, you can configure proxy settings through <code>pkb.py</code> flags.</p>
+<p>To do that simple setup three flags (All urls are in notation ): The
+flag values use the same <code>&lt;protocol&gt;://&lt;server&gt;:&lt;port&gt;</code> syntax as the
+corresponding environment variables, for example
+<code>--http_proxy=http://proxy.example.com:8080</code> .</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--http_proxy</code></td>
+<td>Needed for package manager on Guest OS and for some Perfkit packages</td>
+</tr>
+<tr>
+<td><code>--https_proxy</code></td>
+<td>Needed for package manager or Ubuntu guest and for from github downloaded packages</td>
+</tr>
+<tr>
+<td><code>--ftp_proxy</code></td>
+<td>Needed for some Perfkit packages</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+                <center>Copyright &copy PerfKit Benchmarker Authors</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
