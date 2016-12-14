@@ -82,6 +82,7 @@ class OpenStackFirewall(network.BaseFirewall):
       cmd = utils.OpenStackCLICommand(vm, OSC_SEC_GROUP_RULE_CMD, 'create',
                                       vm.group_id)
       if source_range:
+        # TODO(meteorfox): 'src-ip' has been deprecated for 'remote-ip'
         cmd.flags['src-ip'] = source_range
       cmd.flags['dst-port'] = str(icmp_type)
       cmd.flags['proto'] = ICMP
@@ -113,6 +114,7 @@ class OpenStackFirewall(network.BaseFirewall):
       cmd = utils.OpenStackCLICommand(vm, OSC_SEC_GROUP_RULE_CMD, 'create',
                                       vm.group_id)
       if source_range:
+        # TODO(meteorfox): 'src-ip' has been deprecated for 'remote-ip'
         cmd.flags['src-ip'] = source_range
       cmd.flags['dst-port'] = '%d:%d' % (start_port, end_port)
       for prot in (TCP, UDP,):
